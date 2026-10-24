@@ -37,5 +37,3 @@ A remote desktop client for Meta Quest 3 that connects to Ubuntu PCs running GNO
 2. Install the app on Meta Quest 3 (Developer Mode required)
 3. Enter your PC's IP, username, and password in the app
 4. Connect and start working in VR!
-
-For detailed setup and troubleshooting, see the [project README](https://github.com/your-repo/LinuxDesktop#readme).
