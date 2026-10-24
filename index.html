@@ -67,8 +67,12 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-links a {
@@ -80,7 +84,6 @@
     .nav-links a:hover {
       color: var(--secondary);
     }
-
 
     /* Hero Section */
     .hero {
@@ -155,6 +158,39 @@
 
     .btn-secondary:hover {
       background: rgba(0, 212, 255, 0.1);
+    }
+
+    /* Installation Section */
+    .installation-steps {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      background: var(--surface);
+      border: 1px solid rgba(0, 102, 204, 0.2);
+      border-radius: 8px;
+      padding: 2.5rem;
+    }
+
+    .installation-steps h2 {
+      text-align: left;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+    }
+
+    .installation-steps ol {
+      margin-left: 1.5rem;
+    }
+
+    .installation-steps li {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .installation-steps li code {
+      background: var(--surface-light);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--secondary);
     }
 
     /* Features Section */
@@ -366,15 +402,22 @@
       color: var(--secondary);
     }
 
-
     /* Responsive */
     @media (max-width: 768px) {
       h1 { font-size: 2rem; }
       h2 { font-size: 1.5rem; }
-      .nav-links { gap: 1rem; font-size: 0.9rem; }
+      .nav-links {
+        gap: 0.8rem;
+        font-size: 0.9rem;
+        justify-content: center;
+      }
+      .nav-links li {
+        margin: 0;
+      }
       .requirements { grid-template-columns: 1fr; }
       .gallery { grid-template-columns: 1fr; }
       .cta-buttons { flex-direction: column; }
+      .installation-steps { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -388,6 +431,7 @@
       <span>GNOME Remote Desktop</span>
     </div>
     <div class="nav-links">
+      <li><a href="#installation">Installation</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#requirements">Requirements</a></li>
       <li><a href="#screenshots">Screenshots</a></li>
@@ -405,12 +449,51 @@
 
     <div class="cta-buttons">
       <a href="https://drive.google.com/file/d/1qLkXKNR4VnFeI_w_LH95oNWPRtY2Wj3m/view?usp=sharing" class="btn btn-primary" target="_blank" download>Download APK (Sideload)</a>
-      <a href="#requirements" class="btn btn-secondary">Get Started</a>
+      <a href="#installation" class="btn btn-secondary">Get Started</a>
     </div>
     <p class="download-note">
       Download the APK to sideload on your Quest 3 using <code>adb install</code>.<br>
-      See <a href="#requirements">requirements</a> for setup instructions.
+      Follow the <a href="#installation">setup steps</a> below to configure your PC.
     </p>
+  </div>
+</section>
+
+<!-- Installation & Setup Section -->
+<section id="installation">
+  <h2>🚀 Installation & Setup</h2>
+
+  <div class="installation-steps">
+    <ol>
+      <li>
+        <strong>Download the APK</strong><br>
+        Get the <code>app-release.apk</code> from the link above and sideload it onto your Quest 3.
+      </li>
+
+      <li>
+        <strong>Install the GNOME Remote Desktop service on Ubuntu</strong><br>
+        Open a terminal on your PC and run:
+        <pre style="background:#1a1a2e;border-radius:6px;overflow-x:auto;margin:0.5rem 0;">sudo apt update
+sudo apt install -y gnome-remote-desktop</pre>
+      </li>
+
+      <li>
+        <strong>Enable GNOME Remote Desktop</strong><br>
+        Go to <strong>Settings → Sharing → Remote Desktop</strong> and toggle it on.
+      </li>
+
+      <li>
+        <strong>Create a Remote Desktop user and password</strong><br>
+      </li>
+
+      <li>
+        <strong>Connect from Quest</strong><br>
+        Open the app on your Quest 3 and enter:<br>
+        • <strong>IP address:</strong> your Ubuntu PC's local IP (e.g. <code>192.168.1.10</code>)<br>
+        • <strong>Username:</strong> your R.D. user (e.g. <code>vruser</code>)<br>
+        • <strong>Password:</strong> your R.D. password<br>
+        Then tap <strong>Connect</strong>.
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -502,13 +585,13 @@
 
 <!-- Requirements Section -->
 <section id="requirements">
-  <h2>📋 Requirements & Setup</h2>
+  <h2>📋 Requirements & Limitations</h2>
 
   <div class="requirements">
     <div class="requirement-col">
       <h3>Hardware Requirements</h3>
       <ul>
-        <li>Meta Quest 3 (Developer Mode enabled)</li>
+        <li>Meta Quest 3</li>
         <li>Ubuntu PC with GNOME (tested: Ubuntu 26.04)</li>
         <li>Local network connection (Ethernet + Wi-Fi 5/6 GHz recommended)</li>
       </ul>
