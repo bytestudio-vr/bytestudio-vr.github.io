@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Remote desktop client for Meta Quest 3 - Control your Ubuntu GNOME desktop from VR">
+  <meta name="theme-color" content="#1a1a2e">
+
+  <title>GNOME Remote Desktop for Meta Quest 3</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004a99;
+      --secondary: #00d4ff;
+      --background: #0f0f1e;
+      --surface: #1a1a2e;
+      --surface-light: #2a2a3e;
+      --text: #e0e0e0;
+      --text-muted: #a0a0a0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 15, 30, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-icon {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      margin: 0 auto 2rem;
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 102, 204, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--surface-light);
+      color: var(--secondary);
+      border: 1px solid var(--secondary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    /* Features Section */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid rgba(0, 102, 204, 0.2);
+      padding: 2rem;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 212, 255, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Screenshots Section */
+    .screenshots {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 102, 204, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Requirements Section */
+    .requirements {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .requirement-col h3 {
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .requirement-col ul {
+      list-style: none;
+    }
+
+    .requirement-col li {
+      padding: 0.5rem 0;
+      color: var(--text-muted);
+    }
+
+    .requirement-col li:before {
+      content: "✓ ";
+      color: var(--secondary);
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .limitation li:before {
+      content: "• ";
+      color: #ff6b6b;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(0, 102, 204, 0.2);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .nav-links { gap: 1rem; font-size: 0.9rem; }
+      .requirements { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <img src="images/gnomeRemoteDesktop_full_2560.png" alt="Logo">
+      <span>GNOME Remote Desktop</span>
+    </div>
+    <div class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#screenshots">Screenshots</a></li>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-container">
+    <img src="images/gnomeRemoteDesktop_full_2560.png" alt="App Icon" class="hero-icon">
+    <h1>GNOME Remote Desktop for Meta Quest 3</h1>
+
+    <p class="tagline">Control your Ubuntu desktop from VR with H.264 acceleration</p>
+
+    <div class="cta-buttons">
+      <a href="#requirements" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features">
+  <h2>✨ Features</h2>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎮</div>
+      <h3>High Performance</h3>
+      <p>1920×1080 display on a 2-meter floating panel with H.264 HW acceleration via Qualcomm decoder</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">👁️</div>
+      <h3>Mixed Reality</h3>
+      <p>Passthrough enabled - see your hands, keyboard, and environment around the desktop</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">⌨️</div>
+      <h3>Multiple Input Options</h3>
+      <p>Bluetooth keyboard, virtual keyboard with accents, hand & controller pointing</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔧</div>
+      <h3>Stabilized Pointer</h3>
+      <p>Advanced filtering and dual-hand conflict resolution for comfortable precision control</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>Flexible Layout</h3>
+      <p>Draggable and resizable panels with persistent positioning</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Secure Connection</h3>
+      <p>RDP with NLA/TLS + certificate pinning (TOFU like SSH)</p>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshots Section -->
+<section id="screenshots">
+  <h2>🎬 Screenshots</h2>
+
+  <div class="screenshots">
+    <p>See the app in action on Meta Quest 3:</p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="images/1.png" alt="Screenshot 1">
+      </div>
+      <div class="gallery-item">
+        <img src="images/2.png" alt="Screenshot 2">
+      </div>
+      <div class="gallery-item">
+        <img src="images/3.png" alt="Screenshot 3">
+      </div>
+      <div class="gallery-item">
+        <img src="images/4.png" alt="Screenshot 4">
+      </div>
+      <div class="gallery-item">
+        <img src="images/5.png" alt="Screenshot 5">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements Section -->
+<section id="requirements">
+  <h2>📋 Requirements & Setup</h2>
+
+  <div class="requirements">
+    <div class="requirement-col">
+      <h3>Hardware Requirements</h3>
+      <ul>
+        <li>Meta Quest 3 (Developer Mode enabled)</li>
+        <li>Ubuntu PC with GNOME (tested: Ubuntu 26.04)</li>
+        <li>Local network connection (Ethernet + Wi-Fi 5/6 GHz recommended)</li>
+      </ul>
+    </div>
+
+    <div class="requirement-col">
+      <h3>Known Limitations</h3>
+      <ul class="limitation">
+        <li>GNOME desktop only (not KDE, XFCE, etc.)</li>
+        <li>Single display support</li>
+        <li>30 fps max (server limit)</li>
+        <li>No clipboard or file sharing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 ByteStudio VR. GNOME Remote Desktop Client for Meta Quest 3.</p>
+  <p style="margin-top: 1rem; font-size: 0.85rem;">Built with Meta Spatial SDK • FreeRDP • OpenSSL</p>
+  <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="privacy.html" style="color: var(--primary);">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>

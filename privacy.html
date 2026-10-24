@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Privacy Policy of GNOME Remote Desktop for Meta Quest 3">
+  <meta name="theme-color" content="#1a1a2e">
+
+  <title>Privacy Policy - GNOME Remote Desktop for Meta Quest 3</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0066cc;
+      --secondary: #00d4ff;
+      --background: #0f0f1e;
+      --surface: #1a1a2e;
+      --text: #e0e0e0;
+      --text-muted: #a0a0a0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    nav {
+      background: rgba(15, 15, 30, 0.95);
+      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+    }
+
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo img { width: 32px; height: 32px; border-radius: 6px; }
+
+    nav a.back { color: var(--secondary); text-decoration: none; }
+    nav a.back:hover { text-decoration: underline; }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .updated { color: var(--text-muted); margin-bottom: 2rem; }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--secondary);
+      margin: 2.5rem 0 0.75rem;
+    }
+
+    p, ul { margin-bottom: 1rem; }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--secondary); }
+
+    .summary {
+      background: var(--surface);
+      border: 1px solid rgba(0, 102, 204, 0.3);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid rgba(0, 102, 204, 0.25);
+      vertical-align: top;
+    }
+
+    th { background: var(--surface); color: var(--secondary); }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(0, 102, 204, 0.2);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      main { padding: 2rem 1rem; }
+      table { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a class="logo" href="index.html">
+      <img src="images/gnomeRemoteDesktop_full_2560.png" alt="Logo">
+      <span>GNOME Remote Desktop</span>
+    </a>
+    <a class="back" href="index.html">&larr; Back to home</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: October 24, 2026</p>
+
+  <p>
+    This policy applies to the <strong>GNOME Remote Desktop</strong> application for Meta Quest
+    (package <code>com.bytestudio.linuxdesktop</code>), published by <strong>ByteStudio VR</strong>
+    ("we", "us"). It explains what information the app handles and why.
+  </p>
+
+  <div class="summary">
+    <strong>In short:</strong> we do not collect, receive, sell or share any personal data.
+    The app has no account, no analytics, no advertising and no server operated by us. It only
+    connects to the computer that <em>you</em> choose, and everything it remembers stays on your headset.
+  </div>
+
+  <h2>1. Who is responsible</h2>
+  <p>
+    ByteStudio VR is the publisher of the app. Because no data is sent to us, we do not act as a
+    controller of your personal data in the usual sense. You can contact us at the address given in
+    section 10.
+  </p>
+
+  <h2>2. Information that stays on your headset</h2>
+  <p>To make reconnecting easier, the app stores the following information locally, in its private storage:</p>
+  <table>
+    <thead>
+      <tr><th>Data</th><th>Purpose</th><th>Details</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Host address, port, username</td>
+        <td>Pre-fill the connection form</td>
+        <td>Stored in plain form in the app's private storage.</td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td>Reconnect without retyping</td>
+        <td>Stored <strong>only if you tick "Remember password"</strong>. Encrypted (AES-GCM) with a non-exportable key of the Android Keystore. Untick the box and reconnect to erase it.</td>
+      </tr>
+      <tr>
+        <td>Server certificate fingerprint</td>
+        <td>Detect a server impersonation (trust on first use, like SSH)</td>
+        <td>Stored as a SHA-256 hash, per host and port.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    This information is never transmitted to us or to any third party by the app, and the app's
+    data is excluded from Android backups.
+  </p>
+
+  <h2>3. Information sent to your own computer</h2>
+  <p>
+    The purpose of the app is to control a computer you own or administer. While connected, the app
+    sends to that computer, over the Remote Desktop Protocol (RDP, encrypted with TLS and
+    authenticated with NLA):
+  </p>
+  <ul>
+    <li>your credentials (to log in),</li>
+    <li>your pointer position and clicks,</li>
+    <li>your keystrokes (physical or virtual keyboard).</li>
+  </ul>
+  <p>
+    It receives the screen image and the audio of that computer. This traffic goes directly between
+    your headset and your computer, usually on your local network. It does not pass through any
+    server operated by us. What your computer does with this information is under your control.
+  </p>
+
+  <h2>4. Permissions used</h2>
+  <ul>
+    <li><strong>Network (Internet)</strong>: required to open the RDP connection to your computer.</li>
+    <li><strong>Hand tracking</strong>: lets you point and click with your hands. Hand data is processed
+      on the headset by the Meta system to drive the pointer; the app does not record it, store it or transmit it.</li>
+    <li><strong>Passthrough</strong>: displays the room around the desktop. Camera images are handled
+      by the Meta system; the app has no access to them and does not store them.</li>
+    <li><strong>Audio settings</strong>: used to play the sound of the remote computer.</li>
+  </ul>
+  <p>
+    The app does not use the microphone, the contacts, the location or the files of your headset.
+  </p>
+
+  <h2>5. Analytics, advertising and tracking</h2>
+  <p>
+    The app contains no analytics, no crash reporting service, no advertising and no tracking of
+    any kind. We do not use cookies. We do not build profiles and we do not sell data.
+  </p>
+
+  <h2>6. Meta platform</h2>
+  <p>
+    The app runs on Meta Horizon OS and is distributed through the Meta Horizon Store. Meta may
+    process data about your use of the headset and of the store according to its own policies, which
+    are independent of this app. See the
+    <a href="https://www.meta.com/legal/privacy-policy/" rel="noopener">Meta Privacy Policy</a>
+    and the
+    <a href="https://www.meta.com/legal/quest/privacy-policy/" rel="noopener">Meta Quest Supplemental Privacy Policy</a>.
+  </p>
+
+  <h2>7. Sharing and retention</h2>
+  <p>
+    We do not share any data, since we do not have any. Locally stored information is kept until
+    you remove it, as described below.
+  </p>
+
+  <h2>8. Your choices and deleting your data</h2>
+  <ul>
+    <li>Untick <em>Remember password</em> and reconnect to delete the saved password.</li>
+    <li>Clear the app's data from the headset settings (<em>Settings &rarr; Apps &rarr; GNOME Remote Desktop &rarr; Clear data</em>)
+      to erase the host, username, password and certificate fingerprints.</li>
+    <li>Uninstalling the app deletes all its data from the headset.</li>
+  </ul>
+  <p>
+    Because we hold no personal data about you, there is nothing to access, correct or delete on
+    our side. If you are in the European Union or the United Kingdom, your rights under the GDPR
+    remain intact and you may contact us at any time.
+  </p>
+
+  <h2>9. Children</h2>
+  <p>
+    The app is a productivity tool and is not directed at children under 13. We do not knowingly
+    collect any information from anyone, including children.
+  </p>
+
+  <h2>10. Contact</h2>
+  <p>
+    For any question about this policy: <a href="mailto:cedric.guillot.novia@gmail.com">CONTACT_EMAIL</a>
+  </p>
+
+  <h2>11. Changes to this policy</h2>
+  <p>
+    If the app's data handling changes, we will update this page and its "last updated" date before
+    the new version is released.
+  </p>
+</main>
+
+<footer>
+  <p>&copy; 2026 ByteStudio VR. GNOME Remote Desktop Client for Meta Quest 3.</p>
+  <p style="margin-top: 0.5rem;"><a href="index.html">Home</a></p>
+</footer>
+
+</body>
+</html>
