@@ -466,14 +466,21 @@
     <ol>
       <li>
         <strong>Download the APK</strong><br>
-        Get the <code>app-release.apk</code> from the link above and sideload it onto your Quest 3.
+        Get the <code>app-release.apk</code> from the link above.
+      </li>
+      <li>
+        <strong>Sideload the APK to your Quest 3</strong><br>
+        On the Quest, enable <strong>Developer Mode</strong> (Settings → System → Developer Mode) and <strong>Unknown Sources</strong>.<br>
+        • Via the Quest browser: download the APK and click the file to install.<br>
+        • Via ADB (PC): open a terminal and run <code>adb install app-release.apk</code>.
       </li>
 
       <li>
-        <strong>Install the GNOME Remote Desktop service on Ubuntu</strong><br>
-        Open a terminal on your PC and run:
+        <strong>Install the GNOME Remote Desktop service (optional)</strong><br>
+        If the Remote Desktop feature is not already enabled on your Ubuntu system, open a terminal and run:<br>
         <pre style="background:#1a1a2e;border-radius:6px;overflow-x:auto;margin:0.5rem 0;">sudo apt update
 sudo apt install -y gnome-remote-desktop</pre>
+        <em>If Remote Desktop is already active, you can skip this step.</em>
       </li>
 
       <li>
@@ -490,7 +497,7 @@ sudo apt install -y gnome-remote-desktop</pre>
         Open the app on your Quest 3 and enter:<br>
         • <strong>IP address:</strong> your Ubuntu PC's local IP (e.g. <code>192.168.1.10</code>)<br>
         • <strong>Username:</strong> your R.D. user (e.g. <code>vruser</code>)<br>
-        • <strong>Password:</strong> your R.D. password<br>
+        • <strong>Password:</strong> your R.D. password (e.g. <code>vruser</code>)<br>
         Then tap <strong>Connect</strong>.
       </li>
     </ol>
