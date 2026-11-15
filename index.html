@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Remote desktop client for Meta Quest 3 - Control your Ubuntu GNOME desktop from VR">
-  <meta name="theme-color" content="#1a1a2e">
+  <meta name="description" content="ByteStudio Remote Desktop brings your Windows or Linux desktop into Meta Quest. Free download, Ultra unlocks a third screen, curved panels and layouts.">
+  <meta name="theme-color" content="#0f0f1e">
 
-  <title>ByteStudio Remote Desktop for Meta Quest 3</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ByteStudio Remote Desktop for Meta Quest">
+  <meta property="og:description" content="Your Windows or Linux desktop, in your room. Free on the Meta Horizon Store; Ultra adds a third screen, curved panels and layouts.">
+  <meta property="og:image" content="images/cover-landscape.png">
+
+  <title>ByteStudio Remote Desktop for Meta Quest</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --primary: #0066cc;
@@ -22,9 +23,13 @@
       --background: #0f0f1e;
       --surface: #1a1a2e;
       --surface-light: #2a2a3e;
-      --text: #e0e0e0;
-      --text-muted: #a0a0a0;
+      --text: #e8e8f0;
+      --text-muted: #a0a0b0;
+      --ultra: #ffb300;
+      --free: #43a047;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -33,111 +38,71 @@
       line-height: 1.6;
     }
 
+    a { color: var(--secondary); }
+
     /* Navigation */
     nav {
       position: sticky;
       top: 0;
-      background: rgba(15, 15, 30, 0.95);
+      background: rgba(15, 15, 30, 0.94);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+      border-bottom: 1px solid rgba(0, 102, 204, 0.25);
       z-index: 100;
     }
 
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 2rem;
+      padding: 0.9rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-      font-size: 1.2rem;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
     }
 
-    .logo img {
-      width: 32px;
-      height: 32px;
-    }
+    .logo img { width: 34px; height: 34px; border-radius: 8px; }
 
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
+      gap: 1.4rem;
       list-style: none;
-      margin: 0;
-      padding: 0;
     }
 
     .nav-links a {
-      color: var(--text);
+      color: var(--text-muted);
       text-decoration: none;
+      font-size: 0.95rem;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--secondary);
-    }
+    .nav-links a:hover { color: var(--secondary); }
 
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
-      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
+    .nav-cta { flex-shrink: 0; }
 
-    .hero-container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .hero-icon {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      margin: 0 auto 2rem;
-      border-radius: 12px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .tagline {
-      font-size: 1.3rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
+    /* Buttons */
     .btn {
-      padding: 0.75rem 2rem;
+      padding: 0.7rem 1.5rem;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
       text-decoration: none;
       display: inline-block;
+      text-align: center;
     }
 
     .btn-primary {
@@ -147,7 +112,7 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0, 102, 204, 0.3);
+      box-shadow: 0 10px 22px rgba(0, 102, 204, 0.35);
     }
 
     .btn-secondary {
@@ -156,431 +121,740 @@
       border: 1px solid var(--secondary);
     }
 
-    .btn-secondary:hover {
-      background: rgba(0, 212, 255, 0.1);
+    .btn-secondary:hover { background: rgba(0, 212, 255, 0.1); }
+
+    .btn-ultra {
+      background: linear-gradient(135deg, #ffb300 0%, #ff8f00 100%);
+      color: #1a1a1a;
     }
 
-    /* Installation Section */
-    .installation-steps {
-      max-width: 800px;
-      margin: 0 auto 3rem;
-      background: var(--surface);
-      border: 1px solid rgba(0, 102, 204, 0.2);
-      border-radius: 8px;
-      padding: 2.5rem;
+    .btn-ultra:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(255, 179, 0, 0.3);
     }
 
-    .installation-steps h2 {
-      text-align: left;
-      margin-bottom: 1.5rem;
-      color: var(--secondary);
-    }
+    .btn-small { padding: 0.5rem 1rem; font-size: 0.9rem; }
 
-    .installation-steps ol {
-      margin-left: 1.5rem;
-    }
-
-    .installation-steps li {
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-
-    .installation-steps li code {
-      background: var(--surface-light);
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      font-family: monospace;
-      color: var(--secondary);
-    }
-
-    /* Features Section */
+    /* Sections */
     section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 4.5rem 2rem;
+    }
+
+    .section-kicker {
+      text-align: center;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
     }
 
     h2 {
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
+      font-size: 2.1rem;
+      margin-bottom: 0.8rem;
       text-align: center;
     }
 
+    .section-lead {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: none;
+      margin: 0;
+      padding: 4.5rem 2rem 3.5rem;
+      background:
+        radial-gradient(900px 420px at 50% -10%, rgba(0, 212, 255, 0.16), transparent 65%),
+        linear-gradient(180deg, rgba(0, 102, 204, 0.12) 0%, transparent 70%);
+      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+      text-align: center;
+    }
+
+    .hero-container { max-width: 1000px; margin: 0 auto; }
+
+    .hero-cover {
+      width: 100%;
+      max-width: 940px;
+      height: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      margin-bottom: 2.2rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.4vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 55%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .hero-note {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .badge {
+      background: var(--surface);
+      border: 1px solid rgba(0, 212, 255, 0.22);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Feature grid */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
 
     .feature-card {
       background: var(--surface);
-      border: 1px solid rgba(0, 102, 204, 0.2);
-      padding: 2rem;
-      border-radius: 8px;
-      transition: all 0.3s;
+      border: 1px solid rgba(0, 102, 204, 0.22);
+      padding: 1.7rem;
+      border-radius: 12px;
+      transition: all 0.25s;
     }
 
     .feature-card:hover {
       border-color: var(--secondary);
       transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 212, 255, 0.1);
+      box-shadow: 0 14px 30px rgba(0, 212, 255, 0.08);
     }
 
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
 
-    .feature-card h3 {
-      margin-bottom: 0.5rem;
-      color: var(--secondary);
-    }
+    .feature-card h3 { margin-bottom: 0.35rem; color: var(--secondary); font-size: 1.05rem; }
 
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
+    .feature-card p { color: var(--text-muted); font-size: 0.94rem; }
 
-    /* Screenshots Section */
-    .screenshots {
-      background: var(--surface);
-      border-radius: 8px;
-      padding: 2rem;
-      margin-top: 2rem;
-    }
-
-    .gallery {
+    /* Plans */
+    .plans {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      margin-top: 2rem;
+      align-items: stretch;
+      margin-bottom: 1.5rem;
+    }
+
+    .plan {
+      background: var(--surface);
+      border: 1px solid rgba(0, 102, 204, 0.22);
+      border-radius: 14px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan-ultra {
+      border-color: rgba(255, 179, 0, 0.55);
+      box-shadow: 0 18px 44px rgba(255, 179, 0, 0.08);
+    }
+
+    .plan-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .plan h3 { font-size: 1.35rem; }
+
+    .plan-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--free);
+    }
+
+    .plan-ultra .plan-tag { color: var(--ultra); }
+
+    .plan-price {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .plan ul { list-style: none; margin-bottom: 1.8rem; }
+
+    .plan li {
+      padding: 0.4rem 0;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .plan li::before {
+      content: "✓";
+      color: var(--free);
+      font-weight: 700;
+      margin-right: 0.6rem;
+    }
+
+    .plan-ultra li::before { color: var(--ultra); }
+
+    .plan li.off { color: var(--text-muted); }
+    .plan li.off::before { content: "—"; color: #666; }
+
+    .plan .btn { margin-top: auto; }
+
+    /* Screenshots */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
     }
 
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 102, 204, 0.2);
-      transition: transform 0.3s;
-      cursor: pointer;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 102, 204, 0.25);
+      transition: transform 0.25s, border-color 0.25s;
+      cursor: zoom-in;
+      background: var(--surface);
     }
 
     .gallery-item:hover {
-      transform: scale(1.02);
+      transform: translateY(-4px);
       border-color: var(--secondary);
     }
 
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .gallery-item img { width: 100%; height: auto; display: block; }
+
+    .gallery-caption {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(0, 102, 204, 0.2);
     }
 
-    /* Lightbox Modal */
+    .gallery-note {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 1.2rem;
+    }
+
+    /* Setup */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      counter-reset: step;
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid rgba(0, 102, 204, 0.22);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .step h3 { font-size: 1.02rem; margin-bottom: 0.4rem; }
+
+    .step p { color: var(--text-muted); font-size: 0.92rem; }
+
+    code {
+      background: var(--surface-light);
+      padding: 0.12rem 0.4rem;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--secondary);
+      font-size: 0.88em;
+    }
+
+    /* Requirements */
+    .requirements {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .requirement-col {
+      background: var(--surface);
+      border: 1px solid rgba(0, 102, 204, 0.22);
+      border-radius: 12px;
+      padding: 1.8rem;
+    }
+
+    .requirement-col h3 { margin-bottom: 0.9rem; color: var(--secondary); font-size: 1.1rem; }
+
+    .requirement-col ul { list-style: none; }
+
+    .requirement-col li { padding: 0.45rem 0; color: var(--text-muted); font-size: 0.95rem; }
+
+    .requirement-col li::before {
+      content: "✓ ";
+      color: var(--free);
+      font-weight: 700;
+      margin-right: 0.4rem;
+    }
+
+    .limitation li::before { content: "• "; color: #ff8a80; }
+
+    .callout {
+      margin-top: 1.6rem;
+      background: rgba(255, 179, 0, 0.06);
+      border: 1px solid rgba(255, 179, 0, 0.35);
+      border-left: 4px solid var(--ultra);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+    }
+
+    .callout h3 { color: var(--ultra); font-size: 1.05rem; margin-bottom: 0.4rem; }
+
+    .callout p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* FAQ */
+    .faq { max-width: 860px; margin: 0 auto; }
+
+    .faq details {
+      background: var(--surface);
+      border: 1px solid rgba(0, 102, 204, 0.22);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+
+    .faq summary::after {
+      content: "+";
+      float: right;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .faq details[open] summary::after { content: "−"; }
+
+    .faq p { color: var(--text-muted); margin-top: 0.7rem; font-size: 0.95rem; }
+
+    /* Final CTA */
+    .band {
+      max-width: none;
+      margin: 0;
+      text-align: center;
+      padding: 4.5rem 2rem;
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(0, 102, 204, 0.12) 100%),
+        radial-gradient(800px 300px at 50% 120%, rgba(0, 212, 255, 0.12), transparent 70%);
+      border-top: 1px solid rgba(0, 102, 204, 0.2);
+    }
+
+    .band h2 { margin-bottom: 0.8rem; }
+
+    .band p { color: var(--text-muted); max-width: 640px; margin: 0 auto 1.8rem; }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(0, 102, 204, 0.2);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links { margin-bottom: 1rem; }
+
+    .footer-links a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 0.8rem;
+    }
+
+    .footer-links a:hover { color: var(--secondary); }
+
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
+      inset: 0;
       z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      animation: fadeIn 0.3s;
+      background-color: rgba(0, 0, 0, 0.86);
     }
 
     .modal.active { display: flex; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
     .modal-content {
       position: relative;
       margin: auto;
-      max-width: 90vw;
+      max-width: 92vw;
       max-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .modal-img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 8px;
-    }
+    .modal-img { max-width: 100%; max-height: 90vh; border-radius: 10px; }
 
     .modal-close {
       position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 32px;
-      font-weight: bold;
+      top: 14px;
+      right: 24px;
+      font-size: 34px;
       color: var(--secondary);
       cursor: pointer;
       z-index: 1001;
-      transition: color 0.2s;
     }
-
-    .modal-close:hover { color: white; }
 
     .modal-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 28px;
+      font-size: 30px;
       color: var(--secondary);
       cursor: pointer;
       padding: 20px;
       user-select: none;
-      transition: color 0.2s;
     }
 
-    .modal-nav:hover { color: white; }
+    .modal-prev { left: 8px; }
+    .modal-next { right: 8px; }
 
-    .modal-prev { left: 20px; }
-    .modal-next { right: 20px; }
-
-    /* Requirements Section */
-    .requirements {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 2rem;
-    }
-
-    .requirement-col h3 {
-      margin-bottom: 1rem;
-      color: var(--secondary);
-    }
-
-    .requirement-col ul {
-      list-style: none;
-    }
-
-    .requirement-col li {
-      padding: 0.5rem 0;
-      color: var(--text-muted);
-    }
-
-    .requirement-col li:before {
-      content: "✓ ";
-      color: var(--secondary);
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
-
-    .limitation li:before {
-      content: "• ";
-      color: #ff6b6b;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid rgba(0, 102, 204, 0.2);
-      padding: 3rem 2rem;
-      text-align: center;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links a {
-      color: var(--primary);
-      text-decoration: none;
-      margin: 0 1rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--secondary);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.5rem; }
-      .nav-links {
-        gap: 0.8rem;
-        font-size: 0.9rem;
-        justify-content: center;
-      }
-      .nav-links li {
-        margin: 0;
-      }
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
       .requirements { grid-template-columns: 1fr; }
-      .gallery { grid-template-columns: 1fr; }
-      .cta-buttons { flex-direction: column; }
-      .installation-steps { padding: 1.5rem; }
+      section { padding: 3.5rem 1.3rem; }
+      .hero { padding: 3rem 1.3rem 2.5rem; }
+      .cta-buttons .btn { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <nav>
   <div class="nav-container">
-    <div class="logo">
-      <img src="images/gnomeRemoteDesktop_full_2560.png" alt="Logo">
+    <a class="logo" href="#top">
+      <img src="images/app-icon.png" alt="ByteStudio Remote Desktop">
       <span>ByteStudio Remote Desktop</span>
-    </div>
-    <div class="nav-links">
-      <li><a href="#installation">Installation</a></li>
+    </a>
+    <ul class="nav-links">
       <li><a href="#features">Features</a></li>
-      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#ultra">Free &amp; Ultra</a></li>
       <li><a href="#screenshots">Screenshots</a></li>
-    </div>
+      <li><a href="#setup">Setup</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-primary btn-small nav-cta" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener">Get the app</a>
   </div>
 </nav>
 
-<!-- Hero Section -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-container">
-    <img src="images/gnomeRemoteDesktop_full_2560.png" alt="App Icon" class="hero-icon">
-    <h1>ByteStudio Remote Desktop for Meta Quest 3</h1>
-
-    <p class="tagline">Control your Ubuntu desktop from VR with H.264 acceleration</p>
-
+    <img class="hero-cover" src="images/cover-landscape.png" alt="ByteStudio Remote Desktop running on Meta Quest over a desk">
+    <h1>Your desktop,<br>in your room.</h1>
+    <p class="tagline">
+      ByteStudio Remote Desktop brings your Windows or Linux desktop into Meta Quest with
+      low-latency video, audio and passthrough. Any standard RDP host works — free to download,
+      and Ultra adds a third screen, curved panels and layouts.
+    </p>
     <div class="cta-buttons">
-      <a href="https://drive.google.com/file/d/1qLkXKNR4VnFeI_w_LH95oNWPRtY2Wj3m/view?usp=sharing" class="btn btn-primary" target="_blank" download>Download APK</a>
-      <a href="#installation" class="btn btn-secondary">Get Started</a>
+      <a class="btn btn-primary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener">Get it on Meta Horizon Store</a>
+      <a class="btn btn-secondary" href="#ultra">See what Ultra adds</a>
     </div>
-    <p class="download-note">
-      Download the APK to sideload on your Quest 3 using <code>adb install</code>.<br>
-      Follow the <a href="#installation">setup steps</a> below to configure your PC.
+    <p class="hero-note">Free download · Ultra unlocked inside the app · No account, no cloud</p>
+    <div class="badges">
+      <span class="badge">Quest Pro · Quest 3 · Quest 3S</span>
+      <span class="badge">Windows · Linux · RDP</span>
+      <span class="badge">H.264 hardware decoding</span>
+      <span class="badge">Certificate pinning</span>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <p class="section-kicker">Why it feels native</p>
+  <h2>A remote desktop built for VR, not a window in space</h2>
+  <p class="section-lead">
+    The desktop is a panel you can move, resize and read. Passthrough keeps your hands, keyboard and
+    room visible, and the pointer is filtered so pointing at a small menu stays calm.
+  </p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🖥️</div>
+      <h3>Readable at panel size</h3>
+      <p>Up to 1600×900 per screen with Qualcomm H.264 decoding, sized for text rather than for a demo.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👁️</div>
+      <h3>Passthrough by default</h3>
+      <p>Your hands, keyboard and room stay visible around the desktop. Dim the room independently when you want focus.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🖱️</div>
+      <h3>Stabilized pointer</h3>
+      <p>Filtering and dual-hand arbitration keep the cursor precise, with drag across screens handled as one gesture.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⌨️</div>
+      <h3>Keyboards that work</h3>
+      <p>Bluetooth keyboard, the headset virtual keyboard, and paste from the headset clipboard into the desktop.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔊</div>
+      <h3>Audio and clipboard</h3>
+      <p>Desktop audio plays in the headset, and text can be copied both ways between the two machines.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Direct and pinned</h3>
+      <p>An encrypted RDP connection straight to your PC. The server certificate is pinned on first use, like SSH.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ultra">
+  <p class="section-kicker">Free &amp; Ultra</p>
+  <h2>Start free. Unlock more desk when you need it.</h2>
+  <p class="section-lead">
+    The free edition is a complete remote desktop with two flat screens. Ultra is a one-time
+    purchase inside the app, and you can switch back to flat at any time.
+  </p>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-head">
+        <h3>Free</h3>
+        <span class="plan-tag">Included</span>
+      </div>
+      <p class="plan-price">Download at no cost</p>
+      <ul>
+        <li>Two flat screens, side by side</li>
+        <li>Audio, keyboard and pointer</li>
+        <li>Passthrough and room dimming</li>
+        <li>Drag, move and resize panels</li>
+        <li>Encrypted connection with pinning</li>
+      </ul>
+      <a class="btn btn-secondary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener">Get the free app</a>
+    </div>
+
+    <div class="plan plan-ultra">
+      <div class="plan-head">
+        <h3>Ultra</h3>
+        <span class="plan-tag">One-time in-app purchase</span>
+      </div>
+      <p class="plan-price">Price shown in the Store</p>
+      <ul>
+        <li>Everything in Free</li>
+        <li>A third screen, hosted by your PC</li>
+        <li>Curved panels, switchable back to flat</li>
+        <li>Layout presets: side by side or stacked</li>
+        <li>Built for wide desks and multi-monitor work</li>
+      </ul>
+      <a class="btn btn-ultra" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener">Get the app, then unlock Ultra</a>
+    </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <p class="section-kicker">In the headset</p>
+  <h2>One, two or three screens — the way you arrange them</h2>
+  <p class="section-lead">
+    Ultra adds the stacked layout, curved panels and a third screen. The remote desktop stays a
+    normal row of monitors; the panels are what you arrange in the room.
+  </p>
+
+  <div class="gallery">
+    <div class="gallery-item" onclick="openModal(0)">
+      <img src="images/ultra-01.png" alt="Two screens side by side in Meta Quest">
+      <div class="gallery-caption">Side by side — the classic layout</div>
+    </div>
+    <div class="gallery-item" onclick="openModal(1)">
+      <img src="images/ultra-02.png" alt="Two screens stacked vertically in Meta Quest">
+      <div class="gallery-caption">Stacked — a taller column for documents</div>
+    </div>
+    <div class="gallery-item" onclick="openModal(2)">
+      <img src="images/ultra-03.png" alt="Three curved screens with the room dimmed">
+      <div class="gallery-caption">Ultra: three screens, curved, room dimmed</div>
+    </div>
+  </div>
+  <p class="gallery-note">Screenshots show an Ubuntu host. The app connects to any standard RDP server, Windows included.</p>
+</section>
+
+<section id="setup">
+  <p class="section-kicker">Up and running</p>
+  <h2>Three steps to your desktop</h2>
+  <p class="section-lead">No sideloading and no Developer Mode. The app comes from the Meta Horizon Store.</p>
+
+  <div class="steps">
+    <div class="step">
+      <h3>Install from the Store</h3>
+      <p>Get ByteStudio Remote Desktop on your Quest from the Meta Horizon Store. It installs like any other app.</p>
+    </div>
+    <div class="step">
+      <h3>Enable Remote Desktop on your PC</h3>
+      <p>
+        <strong>Windows 10/11 Pro or Enterprise:</strong> Settings → System → Remote Desktop, turn it
+        on. Home editions cannot host RDP.<br>
+        <strong>Linux:</strong> GNOME Settings → Sharing → Remote Desktop, turn it on and set a
+        username and password.<br>
+        In both cases, note the PC's local IP address.
+      </p>
+    </div>
+    <div class="step">
+      <h3>Connect from the headset</h3>
+      <p>Open the app, enter the IP address, username and password, then connect. Your desktop appears as a panel you can move and resize.</p>
+    </div>
+  </div>
+</section>
+
+<section id="requirements">
+  <p class="section-kicker">Before you start</p>
+  <h2>Requirements &amp; limits</h2>
+
+  <div class="requirements">
+    <div class="requirement-col">
+      <h3>What you need</h3>
+      <ul>
+        <li>Meta Quest Pro, Quest 3 or Quest 3S</li>
+        <li>Windows 10/11 Pro or Enterprise with Remote Desktop enabled, or a Linux RDP host</li>
+        <li>The headset and the PC on the same local network</li>
+        <li>Ethernet or Wi-Fi 6 recommended for smooth video</li>
+      </ul>
+    </div>
+    <div class="requirement-col">
+      <h3>What to expect</h3>
+      <ul class="limitation">
+        <li>Any standard RDP server; Ubuntu GNOME is the reference setup we test against</li>
+        <li>Windows 10/11 Pro is expected to work and to expose Display Control, but it is unverified</li>
+        <li>On Linux, multi-screen depends on the host exposing Display Control</li>
+        <li>Frame rate follows the host, around 30 fps on GNOME</li>
+        <li>Clipboard sharing is text only; there is no file transfer</li>
+        <li>A network drop ends the session; reconnect from the app</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Windows is experimental for now</h3>
+    <p>
+      The app speaks standard RDP, and Windows 10/11 Pro or Enterprise exposes an RDP server, so it
+      is expected to work. We have not officially tested Windows yet, so treat it as experimental
+      until it is validated. If you try it, tell us what happened — Windows version, app version,
+      and whether the third screen appeared:
+      <a href="mailto:bytestudio.rdp@gmail.com?subject=Windows%20test%20feedback%20%E2%80%94%20ByteStudio%20Remote%20Desktop">bytestudio.rdp@gmail.com</a>.
     </p>
   </div>
 </section>
 
-<!-- Installation & Setup Section -->
-<section id="installation">
-  <h2>🚀 Installation & Setup</h2>
+<section id="faq">
+  <p class="section-kicker">Questions</p>
+  <h2>Good to know</h2>
 
-  <div class="installation-steps">
-    <ol>
-      <li>
-        <strong>Download the APK</strong><br>
-        Get the <code>app-release.apk</code> from the link above.
-      </li>
-      <li>
-        <strong>Sideload the APK to your Quest 3</strong><br>
-        On the Quest, enable <strong>Developer Mode</strong> (Settings → System → Developer Mode) and <strong>Unknown Sources</strong>.<br>
-        • Via the Quest browser: download the APK and click the file to install.<br>
-        • Via ADB (PC): open a terminal and run <code>adb install app-release.apk</code>.
-      </li>
-
-      <li>
-        <strong>Install the GNOME Remote Desktop service (optional)</strong><br>
-        If the Remote Desktop feature is not already enabled on your Ubuntu system, open a terminal and run:<br>
-        <pre style="background:#1a1a2e;border-radius:6px;overflow-x:auto;margin:0.5rem 0;">sudo apt update
-sudo apt install -y gnome-remote-desktop</pre>
-        <em>If Remote Desktop is already active, you can skip this step.</em>
-      </li>
-
-      <li>
-        <strong>Enable GNOME Remote Desktop</strong><br>
-        Go to <strong>Settings → Sharing → Remote Desktop</strong> and toggle it on.
-      </li>
-
-      <li>
-        <strong>Create a Remote Desktop user and password</strong><br>
-      </li>
-
-      <li>
-        <strong>Connect from Quest</strong><br>
-        Open the app on your Quest 3 and enter:<br>
-        • <strong>IP address:</strong> your Ubuntu PC's local IP (e.g. <code>192.168.1.10</code>)<br>
-        • <strong>Username:</strong> your R.D. user (e.g. <code>vruser</code>)<br>
-        • <strong>Password:</strong> your R.D. password (e.g. <code>vruser</code>)<br>
-        Then tap <strong>Connect</strong>.
-      </li>
-    </ol>
+  <div class="faq">
+    <details>
+      <summary>Is the app free?</summary>
+      <p>Yes. The free edition is a complete remote desktop with two flat screens. Ultra is a one-time purchase made inside the app, with no subscription.</p>
+    </details>
+    <details>
+      <summary>What exactly does Ultra add?</summary>
+      <p>A third screen, curved panels and layout presets. You can switch between flat and curved in the app settings; the choice is remembered and applied on the next launch.</p>
+    </details>
+    <details>
+      <summary>How do I buy Ultra?</summary>
+      <p>Install the free app, open the connection form and use the Ultra card. The purchase is handled by the Meta Horizon Store and stays attached to your Meta account.</p>
+    </details>
+    <details>
+      <summary>Do I need Developer Mode or a sideloaded APK?</summary>
+      <p>No. The app is distributed through the Meta Horizon Store and installs like any other Quest app.</p>
+    </details>
+    <details>
+      <summary>Does it work with Windows?</summary>
+      <p>In principle, yes, but Windows is not officially supported yet because we have not tested it. Windows 10/11 Pro or Enterprise exposes a standard RDP server: enable Remote Desktop in Settings, then enter the PC's IP address, username and password in the app. Home editions cannot host RDP. Treat Windows as experimental, and if you try it, send us feedback at <a href="mailto:bytestudio.rdp@gmail.com?subject=Windows%20test%20feedback%20%E2%80%94%20ByteStudio%20Remote%20Desktop">bytestudio.rdp@gmail.com</a>, including whether the third screen appeared.</p>
+    </details>
+    <details>
+      <summary>Which Linux desktops work?</summary>
+      <p>The app speaks RDP, so any Linux box with an RDP server can work. Ubuntu with GNOME Remote Desktop is the reference setup we test against. Multi-screen features depend on the host exposing Display Control.</p>
+    </details>
+    <details>
+      <summary>Where does my data go?</summary>
+      <p>The connection goes straight from the headset to your PC. There is no account and no cloud relay. The server certificate is pinned on first use, and the connection credentials stay on the headset, encrypted.</p>
+    </details>
+    <details>
+      <summary>Can I go back to the flat layout after buying Ultra?</summary>
+      <p>Yes. Ultra includes a switch between curved and flat panels. Nothing is locked in one shape.</p>
+    </details>
   </div>
 </section>
 
-<!-- Features Section -->
-<section id="features">
-  <h2>✨ Features</h2>
-
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🎮</div>
-      <h3>High Performance</h3>
-      <p>1920×1080 display on a 2-meter floating panel with H.264 HW acceleration via Qualcomm decoder</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">👁️</div>
-      <h3>Mixed Reality</h3>
-      <p>Passthrough enabled - see your hands, keyboard, and environment around the desktop</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">⌨️</div>
-      <h3>Multiple Input Options</h3>
-      <p>Bluetooth keyboard, virtual keyboard with accents, hand & controller pointing</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🔧</div>
-      <h3>Stabilized Pointer</h3>
-      <p>Advanced filtering and dual-hand conflict resolution for comfortable precision control</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🎨</div>
-      <h3>Flexible Layout</h3>
-      <p>Draggable and resizable panels with persistent positioning</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🔒</div>
-      <h3>Secure Connection</h3>
-      <p>RDP with NLA/TLS + certificate pinning (TOFU like SSH)</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🔊</div>
-      <h3>Audio Playback</h3>
-      <p>Full audio support from your remote PC with PCM playback and low latency buffering</p>
-    </div>
-  </div>
+<section class="band">
+  <h2>Your desk is already in the room.</h2>
+  <p>Install the free app on your Quest, connect to your PC, and unlock Ultra when you want more screens.</p>
+  <a class="btn btn-primary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener">Get it on Meta Horizon Store</a>
 </section>
 
-<!-- Screenshots Section -->
-<section id="screenshots">
-  <h2>🎬 Screenshots</h2>
-
-  <div class="screenshots">
-    <p>See the app in action on Meta Quest 3:</p>
-
-    <div class="gallery">
-      <div class="gallery-item" onclick="openModal(0)">
-        <img src="images/1.png" alt="Screenshot 1">
-      </div>
-      <div class="gallery-item" onclick="openModal(1)">
-        <img src="images/2.png" alt="Screenshot 2">
-      </div>
-      <div class="gallery-item" onclick="openModal(2)">
-        <img src="images/3.png" alt="Screenshot 3">
-      </div>
-      <div class="gallery-item" onclick="openModal(3)">
-        <img src="images/4.png" alt="Screenshot 4">
-      </div>
-      <div class="gallery-item" onclick="openModal(4)">
-        <img src="images/5.png" alt="Screenshot 5">
-      </div>
-    </div>
+<footer>
+  <div class="footer-links">
+    <a href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener">Meta Horizon Store</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="mailto:bytestudio.rdp@gmail.com">Contact</a>
   </div>
-</section>
+  <p>&copy; 2026 ByteStudio VR. ByteStudio Remote Desktop for Meta Quest.</p>
+  <p style="margin-top: 0.6rem; font-size: 0.82rem;">Built with Meta Spatial SDK · FreeRDP · OpenSSL</p>
+</footer>
 
-<!-- Lightbox Modal -->
 <div id="imageModal" class="modal">
   <span class="modal-close" onclick="closeModal()">&times;</span>
   <span class="modal-nav modal-prev" onclick="changeSlide(-1)">&#10094;</span>
@@ -590,84 +864,39 @@ sudo apt install -y gnome-remote-desktop</pre>
   <span class="modal-nav modal-next" onclick="changeSlide(1)">&#10095;</span>
 </div>
 
-<!-- Requirements Section -->
-<section id="requirements">
-  <h2>📋 Requirements & Limitations</h2>
-
-  <div class="requirements">
-    <div class="requirement-col">
-      <h3>Hardware Requirements</h3>
-      <ul>
-        <li>Meta Quest 3</li>
-        <li>Ubuntu PC with GNOME (tested: Ubuntu 26.04)</li>
-        <li>Local network connection (Ethernet + Wi-Fi 5/6 GHz recommended)</li>
-      </ul>
-    </div>
-
-    <div class="requirement-col">
-      <h3>Known Limitations</h3>
-      <ul class="limitation">
-        <li>GNOME desktop only (not KDE, XFCE, etc.)</li>
-        <li>Single display support</li>
-        <li>30 fps max (server limit)</li>
-        <li>No clipboard or file sharing</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <p>&copy; 2026 ByteStudio VR. ByteStudio Remote Desktop Client for Meta Quest 3.</p>
-  <p style="margin-top: 1rem; font-size: 0.85rem;">Built with Meta Spatial SDK • FreeRDP • OpenSSL</p>
-  <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="privacy.html" style="color: var(--primary);">Privacy Policy</a></p>
-</footer>
-
 <script>
   const screenshots = [
-    'images/1.png',
-    'images/2.png',
-    'images/3.png',
-    'images/4.png',
-    'images/5.png'
+    'images/ultra-01.png',
+    'images/ultra-02.png',
+    'images/ultra-03.png'
   ];
   let currentSlide = 0;
 
   function openModal(index) {
     currentSlide = index;
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    modalImg.src = screenshots[currentSlide];
-    modal.classList.add('active');
+    document.getElementById('modalImage').src = screenshots[currentSlide];
+    document.getElementById('imageModal').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
-    const modal = document.getElementById('imageModal');
-    modal.classList.remove('active');
+    document.getElementById('imageModal').classList.remove('active');
     document.body.style.overflow = 'auto';
   }
 
   function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide >= screenshots.length) currentSlide = 0;
-    if (currentSlide < 0) currentSlide = screenshots.length - 1;
-
-    const modalImg = document.getElementById('modalImage');
-    modalImg.src = screenshots[currentSlide];
+    currentSlide = (currentSlide + direction + screenshots.length) % screenshots.length;
+    document.getElementById('modalImage').src = screenshots[currentSlide];
   }
 
-  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('imageModal');
     if (!modal.classList.contains('active')) return;
-
     if (e.key === 'ArrowLeft') changeSlide(-1);
     if (e.key === 'ArrowRight') changeSlide(1);
     if (e.key === 'Escape') closeModal();
   });
 
-  // Close modal on background click
   document.getElementById('imageModal').addEventListener('click', (e) => {
     if (e.target.id === 'imageModal') closeModal();
   });
