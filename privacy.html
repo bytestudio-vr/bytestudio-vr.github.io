@@ -148,16 +148,21 @@
   </p>
 
   <div class="summary">
-    <strong>In short, for the app:</strong> we do not collect, receive, sell or share any personal data.
-    The app has no account, no analytics, no advertising and no server operated by us. It only
-    connects to the computer that <em>you</em> choose, and everything it remembers stays on your headset.
+    <strong>In short, for the app:</strong> we do not collect, receive, sell or share any personal
+    data, and we operate no server. The app has no account of its own, no analytics and no
+    advertising. It connects only to the computer that <em>you</em> choose, and everything it
+    remembers stays on your headset. One exception, described in section 6: to check that the
+    optional Ultra add-on was purchased, the app asks Horizon OS, on the headset, for the purchases
+    of the Meta account you are signed in with. That involves your Meta user ID, which the platform
+    uses on the device; it is never sent to us and we keep no copy of it.
   </div>
 
   <h2>1. Who is responsible</h2>
   <p>
-    ByteStudio VR is the publisher of the app. Because no app data is sent to us, we do not act as a
-    controller of your personal data in the usual sense. You can contact us at the address given in
-    section 10.
+    ByteStudio VR is the publisher of the app and the entity responsible for the small amount of Meta
+    account data described in section 6. We hold no database and no server: the only personal data
+    involved is read on your headset, by the platform, for the purchase check. You can contact us at
+    the address given in section 10 for any question or request about that data.
   </p>
 
   <h2>2. Information that stays on your headset</h2>
@@ -226,40 +231,122 @@
     any kind. The app does not use cookies. We do not build profiles and we do not sell data.
   </p>
 
-  <h2>6. Meta platform</h2>
+  <h2>6. Meta platform, in-app purchase and your Meta user ID</h2>
   <p>
-    The app runs on Meta Horizon OS and is distributed through the Meta Horizon Store. Meta may
-    process data about your use of the headset and of the store according to its own policies, which
-    are independent of this app. See the
+    The app runs on Meta Horizon OS and is distributed through the Meta Horizon Store. Meta processes
+    data about your use of the headset and of the store according to its own policies, which are
+    independent of this app. See the
     <a href="https://www.meta.com/legal/privacy-policy/" rel="noopener">Meta Privacy Policy</a>
     and the
     <a href="https://www.meta.com/legal/quest/privacy-policy/" rel="noopener">Meta Quest Supplemental Privacy Policy</a>.
   </p>
   <p>
-    <strong>In-app purchase.</strong> The Ultra edition is sold as a one-time in-app purchase through
-    the Meta Horizon Store. Payment details are handled entirely by Meta and are never seen, stored or
-    transmitted by the app. To unlock the purchased features, the app checks the purchase entitlement
-    attached to your Meta account through the Horizon Platform SDK, and keeps a local copy of that
-    state so it can start without the network. That local copy contains no personal data.
+    The Ultra edition is a one-time in-app purchase, sold as an add-on through the Meta Horizon
+    Store. Payment is handled entirely by Meta: the app never sees, stores or transmits your payment
+    details, your card or your billing address.
+  </p>
+  <p>
+    To know whether Ultra was purchased, the app must ask which purchases belong to the Meta account
+    that is signed in on the headset. It does so with the Horizon Platform SDK, which Horizon OS
+    provides on the device. That check is the only reason the app touches account data, and it works
+    like this:
+  </p>
+  <table>
+    <thead>
+      <tr><th>Question</th><th>Answer</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>What data is involved</td>
+        <td>
+          Your <strong>Meta user ID</strong>, the numeric identifier of the Meta account signed in on
+          the headset, and the list of purchases attached to that account (in practice, whether the
+          Ultra add-on is in it). The app does not read your name, username, profile picture, email
+          address, friends, activity or any other account data.
+        </td>
+      </tr>
+      <tr>
+        <td>How it is collected</td>
+        <td>
+          On the headset, through the Horizon Platform SDK built into Horizon OS, when the app starts
+          and when it refreshes the purchase state. Nothing is typed, no form is filled in, and no
+          additional permission prompt is involved: it uses the Meta account already signed in on the
+          device.
+        </td>
+      </tr>
+      <tr>
+        <td>How it is used</td>
+        <td>
+          Solely to decide whether the Ultra features unlock, and to remember that answer for the next
+          start. The user ID is used to identify the account across sessions so that a purchase
+          follows the account that made it. It is never used for advertising, analytics, profiling,
+          personalisation or any other purpose.
+        </td>
+      </tr>
+      <tr>
+        <td>Where it is processed</td>
+        <td>
+          Inside the app's process on your headset, and by Meta's purchase service. <strong>It is
+          never sent to us</strong>: we operate no server, and the app has nowhere to send it. It is
+          not shared with anyone else either.
+        </td>
+      </tr>
+      <tr>
+        <td>How long it is kept</td>
+        <td>
+          We keep no copy, at any time. The app stores only a yes/no flag, "Ultra unlocked", in its
+          private storage. That flag contains no identifier, is not tied to a particular account, and
+          is corrected at the next start if the answer changed. Meta keeps the purchase record on its
+          side, under its own policies.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    If you never buy Ultra, the check still runs when the app starts, because the app has to know
+    whether the features are unlocked. Nothing is created or kept from it beyond the flag described
+    above. Uninstalling the app or clearing its data removes that flag; see section 8.
   </p>
 
   <h2>7. Sharing and retention</h2>
   <p>
-    We do not share any app data, since we do not have any. Locally stored information is kept until
-    you remove it, as described below.
+    We share nothing, because we receive nothing. The Meta user ID and the list of purchases stay
+    between your headset and Meta's purchase service; we hold no copy of them, and we do not sell,
+    rent or transfer them. Locally stored connection information is kept until you remove it, as
+    described below.
+  </p>
+  <p>
+    We delete user data without undue delay when you ask us to, when it is no longer needed for the
+    purchase check, or when Meta or applicable law requires it. In practice there is nothing on our
+    side to delete, and every request is answered in writing, as described in section 8.
   </p>
 
-  <h2>8. Your choices and deleting your data</h2>
+  <h2 id="deletion">8. Your choices, and deleting your data</h2>
+  <div class="summary">
+    <strong>Data deletion request.</strong> Write to
+    <a href="mailto:bytestudio.rdp@gmail.com?subject=Data%20deletion%20request">bytestudio.rdp@gmail.com</a>
+    with the subject line <em>Data deletion request</em>. This address is our dedicated way to ask
+    for deletion or correction of your data. We answer within 30 days, and we confirm in writing
+    what was deleted and what was not.
+  </div>
+  <p>
+    Because the app sends us nothing, a deletion request usually ends with this answer: we hold no
+    record of you, and there is nothing to erase on our side. The request is still the right way to
+    make us check and confirm it, and to exercise your rights if you believe otherwise.
+  </p>
+  <p>On your headset, you can also delete everything the app stores, at any time:</p>
   <ul>
     <li>Untick <em>Remember password</em> and reconnect to delete the saved password.</li>
     <li>Clear the app's data from the headset settings (<em>Settings &rarr; Apps &rarr; ByteStudio Remote Desktop &rarr; Clear data</em>)
-      to erase the host, username, password and certificate fingerprints.</li>
+      to erase the host, username, password, certificate fingerprints and the "Ultra unlocked" flag.</li>
     <li>Uninstalling the app deletes all its data from the headset.</li>
+    <li>Deleting your Meta account, or the purchase, is handled by Meta in your Meta account settings;
+      the app loses access to the purchase check as soon as the account is gone.</li>
   </ul>
   <p>
-    Because we hold no personal data from the app, there is nothing to access, correct or delete on
-    our side. If you are in the European Union or the United Kingdom, your rights under the GDPR
-    remain intact and you may contact us at any time.
+    If you are in the European Union or the United Kingdom, your rights under the GDPR remain
+    intact: you may ask us for access, correction, deletion, restriction or portability of your
+    data, and you may object to its processing. Use the address above; we answer within one month.
   </p>
 
   <h2>9. Children</h2>
@@ -270,7 +357,9 @@
 
   <h2>10. Contact</h2>
   <p>
-    For any question about this policy: <a href="mailto:cedric.guillot.novia@gmail.com">cedric.guillot.novia@gmail.com</a>
+    For any question about this policy, or to ask for deletion or correction of your data:
+    <a href="mailto:bytestudio.rdp@gmail.com?subject=Privacy">bytestudio.rdp@gmail.com</a>.
+    For a deletion request, use the subject line <em>Data deletion request</em>.
   </p>
 
   <h2>11. Changes to this policy</h2>
