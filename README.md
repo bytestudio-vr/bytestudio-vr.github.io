@@ -8,7 +8,7 @@ Windows or Linux desktop into VR over standard RDP.
 - `images/` — app icon, Store cover and layout screenshots.
 
 The app is a free download on the Meta Horizon Store; the Ultra edition is a one-time in-app
-purchase that adds a third screen, curved panels and layout presets. Quest Pro, Quest 3 and Quest 3S.
+purchase that adds a third screen, curved panels and layout presets. Quest 3 and Quest 3S.
 
 Windows 10/11 Pro is expected to work because it exposes standard RDP, but it is **not officially
 supported yet**: it has not been tested. Testers are welcome to report back at
