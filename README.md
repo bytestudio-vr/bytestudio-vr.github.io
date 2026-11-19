@@ -6,7 +6,13 @@ Windows or Linux desktop into VR over standard RDP.
 - `index.html` — product page: features, Free vs Ultra, screenshots, setup, FAQ, Store calls to action.
 - `privacy.html` — privacy policy, including the in-app purchase disclosure.
 - `analytics.js` — optional Umami Cloud tracking, shared by both pages.
+- `robots.txt` — crawler rules and sitemap location.
+- `sitemap.xml` — URLs submitted to search engines.
 - `images/` — app icon, Store cover and layout screenshots.
+
+SEO lives in `index.html`: canonical URL, Open Graph and Twitter cards, and JSON-LD
+(`SoftwareApplication` plus `FAQPage` built from the on-page FAQ). Absolute URLs point to
+`https://bytestudio-vr.github.io/`, so update them if the domain changes.
 
 The app is a free download on the Meta Horizon Store; the Ultra edition is a one-time in-app
 purchase that adds a third screen, curved panels and layout presets. Quest 3 and Quest 3S.

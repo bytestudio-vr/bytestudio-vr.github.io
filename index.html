@@ -3,15 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ByteStudio Remote Desktop brings your Windows or Linux desktop into Meta Quest. Free download, Ultra unlocks a third screen, curved panels and layouts.">
+  <title>ByteStudio Remote Desktop — Meta Quest 3 RDP Client</title>
+  <meta name="description" content="Remote desktop app for Meta Quest 3 and 3S. Connect to a Windows or Linux RDP host on your network. Free download; Ultra adds a third screen.">
   <meta name="theme-color" content="#0f0f1e">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://bytestudio-vr.github.io/">
+  <link rel="icon" type="image/png" href="images/app-icon.png">
+  <link rel="apple-touch-icon" href="images/app-icon.png">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ByteStudio Remote Desktop for Meta Quest">
+  <meta property="og:site_name" content="ByteStudio VR">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://bytestudio-vr.github.io/">
+  <meta property="og:title" content="ByteStudio Remote Desktop for Meta Quest 3">
   <meta property="og:description" content="Your Windows or Linux desktop, in your room. Free on the Meta Horizon Store; Ultra adds a third screen, curved panels and layouts.">
-  <meta property="og:image" content="images/cover-landscape.png">
+  <meta property="og:image" content="https://bytestudio-vr.github.io/images/cover-landscape.png">
+  <meta property="og:image:width" content="2560">
+  <meta property="og:image:height" content="1440">
+  <meta property="og:image:alt" content="ByteStudio Remote Desktop running on Meta Quest over a desk">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ByteStudio Remote Desktop for Meta Quest 3">
+  <meta name="twitter:description" content="Your Windows or Linux desktop, in your room. Free on the Meta Horizon Store; Ultra adds a third screen, curved panels and layouts.">
+  <meta name="twitter:image" content="https://bytestudio-vr.github.io/images/cover-landscape.png">
 
-  <title>ByteStudio Remote Desktop for Meta Quest</title>
+  <link rel="preload" as="image" href="images/cover-landscape.png" fetchpriority="high">
 
   <script defer src="analytics.js"></script>
 
@@ -53,7 +68,7 @@
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
       padding: 0.9rem 2rem;
       display: flex;
@@ -139,9 +154,9 @@
 
     /* Sections */
     section {
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 4.5rem 2rem;
+      padding: 4.5rem 3rem;
     }
 
     .section-kicker {
@@ -163,7 +178,7 @@
     .section-lead {
       text-align: center;
       color: var(--text-muted);
-      max-width: 720px;
+      max-width: 820px;
       margin: 0 auto 3rem;
     }
 
@@ -171,25 +186,26 @@
     .hero {
       max-width: none;
       margin: 0;
-      padding: 4.5rem 2rem 3.5rem;
+      padding: 0 2rem 4.5rem;
       background:
-        radial-gradient(900px 420px at 50% -10%, rgba(0, 212, 255, 0.16), transparent 65%),
-        linear-gradient(180deg, rgba(0, 102, 204, 0.12) 0%, transparent 70%);
+        radial-gradient(1200px 520px at 50% 0%, rgba(0, 212, 255, 0.1), transparent 70%),
+        linear-gradient(180deg, rgba(0, 102, 204, 0.08) 0%, transparent 70%);
       border-bottom: 1px solid rgba(0, 102, 204, 0.2);
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-container { max-width: 1000px; margin: 0 auto; }
-
-    .hero-cover {
-      width: 100%;
-      max-width: 940px;
-      height: auto;
-      border-radius: 16px;
-      border: 1px solid rgba(0, 212, 255, 0.25);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-      margin-bottom: 2.2rem;
+    .hero-banner {
+      height: clamp(320px, 58vh, 640px);
+      margin: 0 -2rem 2.5rem;
+      background: url('images/cover-landscape.png') center 35% / cover no-repeat;
+      mask-image: linear-gradient(180deg, transparent 0%, #000 6%, #000 58%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 6%, #000 58%, transparent 100%);
+      pointer-events: none;
     }
+
+    .hero-container { max-width: 1280px; margin: 0 auto; }
 
     h1 {
       font-size: clamp(2rem, 4.4vw, 3.2rem);
@@ -204,7 +220,7 @@
     .tagline {
       font-size: clamp(1.05rem, 2vw, 1.3rem);
       color: var(--text-muted);
-      max-width: 760px;
+      max-width: 860px;
       margin: 0 auto 2rem;
     }
 
@@ -461,7 +477,7 @@
     .callout p { color: var(--text-muted); font-size: 0.95rem; }
 
     /* FAQ */
-    .faq { max-width: 860px; margin: 0 auto; }
+    .faq { max-width: 960px; margin: 0 auto; }
 
     .faq details {
       background: var(--surface);
@@ -504,7 +520,7 @@
 
     .band h2 { margin-bottom: 0.8rem; }
 
-    .band p { color: var(--text-muted); max-width: 640px; margin: 0 auto 1.8rem; }
+    .band p { color: var(--text-muted); max-width: 720px; margin: 0 auto 1.8rem; }
 
     /* Footer */
     footer {
@@ -578,10 +594,125 @@
       .nav-cta { display: none; }
       .requirements { grid-template-columns: 1fr; }
       section { padding: 3.5rem 1.3rem; }
-      .hero { padding: 3rem 1.3rem 2.5rem; }
+      .hero { padding: 0 1.3rem 3rem; }
+      .hero-banner { height: clamp(220px, 38vh, 380px); margin: 0 -1.3rem 2rem; }
       .cta-buttons .btn { width: 100%; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://bytestudio-vr.github.io/#app",
+        "name": "ByteStudio Remote Desktop",
+        "description": "Remote desktop app for Meta Quest 3 and 3S. Connects over standard RDP to a Windows or Linux host on your local network, with audio, keyboard, clipboard and certificate pinning.",
+        "url": "https://bytestudio-vr.github.io/",
+        "downloadUrl": "https://www.meta.com/experiences/1466447889876925/",
+        "sameAs": "https://www.meta.com/experiences/1466447889876925/",
+        "image": "https://bytestudio-vr.github.io/images/cover-landscape.png",
+        "screenshot": [
+          "https://bytestudio-vr.github.io/images/ultra-01.png",
+          "https://bytestudio-vr.github.io/images/ultra-02.png",
+          "https://bytestudio-vr.github.io/images/ultra-03.png"
+        ],
+        "operatingSystem": "Meta Horizon OS",
+        "applicationCategory": "UtilitiesApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free download. Ultra is a one-time in-app purchase made through the Meta Horizon Store."
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ByteStudio VR",
+          "url": "https://bytestudio-vr.github.io/"
+        },
+        "featureList": [
+          "Two flat screens in the free edition",
+          "Third screen, curved panels and layout presets with Ultra",
+          "Passthrough, room dimming and stabilized pointer",
+          "Desktop audio and two-way text clipboard",
+          "Standard RDP with NLA and TLS",
+          "Certificate pinning on first use"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://bytestudio-vr.github.io/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the app free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The free edition is a complete remote desktop with two flat screens. Ultra is a one-time purchase made inside the app, with no subscription."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What exactly does Ultra add?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A third screen, curved panels and layout presets. You can switch between flat and curved in the app settings; the choice is remembered and applied on the next launch."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I buy Ultra?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Install the free app, open the connection form and use the Ultra card. The purchase is handled by the Meta Horizon Store and stays attached to your Meta account."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need Developer Mode or a sideloaded APK?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The app is distributed through the Meta Horizon Store and installs like any other Quest app."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work with Windows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In principle, yes, but Windows is not officially supported yet because we have not tested it. Windows 10/11 Pro or Enterprise exposes a standard RDP server: enable Remote Desktop in Settings, then enter the PC's IP address, username and password in the app. Home editions cannot host RDP. Treat Windows as experimental."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which Linux desktops work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The app speaks RDP, so any Linux box with an RDP server can work. Ubuntu with GNOME Remote Desktop is the reference setup we test against. Multi-screen features depend on the host exposing Display Control."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where does my data go?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The connection goes straight from the headset to your PC. There is no account and no cloud relay. The server certificate is pinned on first use, and the connection credentials stay on the headset, encrypted."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I go back to the flat layout after buying Ultra?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Ultra includes a switch between curved and flat panels. Nothing is locked in one shape."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -603,9 +734,9 @@
 </nav>
 
 <section class="hero" id="top">
+  <div class="hero-banner" role="img" aria-label="ByteStudio Remote Desktop running on Meta Quest over a desk"></div>
   <div class="hero-container">
-    <img class="hero-cover" src="images/cover-landscape.png" alt="ByteStudio Remote Desktop running on Meta Quest over a desk">
-    <h1>Your desktop,<br>in your room.</h1>
+    <h1>Your desktop in your room.</h1>
     <p class="tagline">
       ByteStudio Remote Desktop brings your Windows or Linux desktop into Meta Quest with
       low-latency video, audio and passthrough. Any standard RDP host works — free to download,
@@ -720,15 +851,15 @@
 
   <div class="gallery">
     <div class="gallery-item" onclick="openModal(0)">
-      <img src="images/ultra-01.png" alt="Two screens side by side in Meta Quest">
+      <img src="images/ultra-01.png" width="2560" height="1440" loading="lazy" alt="Two screens side by side in Meta Quest">
       <div class="gallery-caption">Side by side — the classic layout</div>
     </div>
     <div class="gallery-item" onclick="openModal(1)">
-      <img src="images/ultra-02.png" alt="Two screens stacked vertically in Meta Quest">
+      <img src="images/ultra-02.png" width="2560" height="1440" loading="lazy" alt="Two screens stacked vertically in Meta Quest">
       <div class="gallery-caption">Stacked — a taller column for documents</div>
     </div>
     <div class="gallery-item" onclick="openModal(2)">
-      <img src="images/ultra-03.png" alt="Three curved screens with the room dimmed">
+      <img src="images/ultra-03.png" width="2560" height="1440" loading="lazy" alt="Three curved screens with the room dimmed">
       <div class="gallery-caption">Ultra: three screens, curved, room dimmed</div>
     </div>
   </div>
