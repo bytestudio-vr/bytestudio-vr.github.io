@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ByteStudio Remote Desktop — Meta Quest 3 RDP Client</title>
-  <meta name="description" content="Remote desktop app for Meta Quest 3 and 3S. Connect to a Windows or Linux RDP host on your network. Free download; Ultra adds a third screen.">
+  <meta name="description" content="Remote desktop for Meta Quest 3 and 3S. Tested with GNOME and Windows Server 2025. Up to two screens free, three with Ultra, plus audio and text clipboard.">
   <meta name="theme-color" content="#0f0f1e">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://bytestudio-vr.github.io/">
@@ -16,14 +16,14 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://bytestudio-vr.github.io/">
   <meta property="og:title" content="ByteStudio Remote Desktop for Meta Quest 3">
-  <meta property="og:description" content="Your Windows or Linux desktop, in your room. Free on the Meta Horizon Store; Ultra adds a third screen, curved panels and layouts.">
+  <meta property="og:description" content="Your Windows or Linux desktop, in your room. Tested with GNOME and Windows Server 2025, with responsive video, audio and up to three screens.">
   <meta property="og:image" content="https://bytestudio-vr.github.io/images/cover-landscape.png">
   <meta property="og:image:width" content="2560">
   <meta property="og:image:height" content="1440">
   <meta property="og:image:alt" content="ByteStudio Remote Desktop running on Meta Quest over a desk">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ByteStudio Remote Desktop for Meta Quest 3">
-  <meta name="twitter:description" content="Your Windows or Linux desktop, in your room. Free on the Meta Horizon Store; Ultra adds a third screen, curved panels and layouts.">
+  <meta name="twitter:description" content="Your Windows or Linux desktop, in your room. Tested with GNOME and Windows Server 2025, with responsive video, audio and up to three screens.">
   <meta name="twitter:image" content="https://bytestudio-vr.github.io/images/cover-landscape.png">
 
   <link rel="preload" as="image" href="images/cover-landscape.png" fetchpriority="high">
@@ -391,6 +391,48 @@
       margin-top: 1.2rem;
     }
 
+    /* Compatibility */
+    .compatibility-scroll {
+      overflow-x: auto;
+      background: var(--surface);
+      border: 1px solid rgba(0, 102, 204, 0.22);
+      border-radius: 12px;
+    }
+
+    .compatibility-scroll:focus-visible { outline: 2px solid var(--secondary); outline-offset: 4px; }
+
+    .compatibility-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.93rem;
+    }
+
+    .compatibility-table caption {
+      padding: 1rem 1.2rem;
+      text-align: left;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .compatibility-table th, .compatibility-table td {
+      padding: 1rem 1.2rem;
+      border-top: 1px solid rgba(0, 102, 204, 0.22);
+      vertical-align: top;
+    }
+
+    .compatibility-table thead th { color: var(--secondary); background: var(--surface-light); }
+    .compatibility-table tbody th { font-weight: 600; }
+    .compatibility-table td { color: var(--text-muted); }
+    .compatibility-table small { display: block; color: var(--text-muted); font-weight: 400; }
+
+    .compatibility-note {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
     /* Setup */
     .steps {
       display: grid;
@@ -608,14 +650,14 @@
         "@type": "SoftwareApplication",
         "@id": "https://bytestudio-vr.github.io/#app",
         "name": "ByteStudio Remote Desktop",
-        "description": "Remote desktop app for Meta Quest 3 and 3S. Connects over standard RDP to a Windows or Linux host on your local network, with audio, keyboard, clipboard and certificate pinning.",
+        "description": "Remote desktop app for Meta Quest 3 and 3S, tested with GNOME Remote Desktop and Windows Server 2025. Connects over standard RDP with responsive video and audio, up to three screens, text clipboard and certificate pinning.",
         "url": "https://bytestudio-vr.github.io/",
         "downloadUrl": "https://www.meta.com/experiences/1466447889876925/",
         "sameAs": "https://www.meta.com/experiences/1466447889876925/",
         "image": "https://bytestudio-vr.github.io/images/cover-landscape.png",
         "screenshot": [
-          "https://bytestudio-vr.github.io/images/ultra-01.png",
-          "https://bytestudio-vr.github.io/images/ultra-02.png",
+          "https://bytestudio-vr.github.io/images/ultra-01.jpg",
+          "https://bytestudio-vr.github.io/images/ultra-02.jpg",
           "https://bytestudio-vr.github.io/images/ultra-03.png"
         ],
         "operatingSystem": "Meta Horizon OS",
@@ -632,10 +674,14 @@
           "url": "https://bytestudio-vr.github.io/"
         },
         "featureList": [
-          "Two flat screens in the free edition",
-          "Third screen, curved panels and layout presets with Ultra",
-          "Passthrough, room dimming and stabilized pointer",
-          "Desktop audio and two-way text clipboard",
+          "Up to two flat screens in Free, three screens with Ultra, subject to host support",
+          "Curved panels and layout presets with Ultra",
+          "Passthrough, remembered room dimming and stabilized cross-screen pointer",
+          "Adaptive screen resolution and hardware H.264 decoding when supported by the host",
+          "Video presentation separate from network reads for responsive desktop audio",
+          "Two-way text clipboard with exact text preserved by default",
+          "Host-aware screen changes with confirmation and explained reconnect fallback",
+          "Desktop startup status and persistent notifications with diagnostic details",
           "Standard RDP with NLA and TLS",
           "Certificate pinning on first use"
         ]
@@ -649,7 +695,7 @@
             "name": "Is the app free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. The free edition is a complete remote desktop with two flat screens. Ultra is a one-time purchase made inside the app, with no subscription."
+              "text": "Yes. The free edition is a complete remote desktop with up to two flat screens, subject to host support. Ultra is a one-time purchase made inside the app, with no subscription."
             }
           },
           {
@@ -681,7 +727,7 @@
             "name": "Does it work with Windows?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "In principle, yes, but Windows is not officially supported yet because we have not tested it. Windows 10/11 Pro or Enterprise exposes a standard RDP server: enable Remote Desktop in Settings, then enter the PC's IP address, username and password in the app. Home editions cannot host RDP. Treat Windows as experimental."
+              "text": "Yes. Windows Server 2025 has been tested on Quest 3 with one to three screens and screen-count changes without reconnecting. Windows 10/11 Pro or Enterprise can host RDP, but these desktop editions have not yet been tested here. Windows Home cannot host RDP. See the compatibility table for the scope of testing."
             }
           },
           {
@@ -689,7 +735,31 @@
             "name": "Which Linux desktops work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The app speaks RDP, so any Linux box with an RDP server can work. Ubuntu with GNOME Remote Desktop is the reference setup we test against. Multi-screen features depend on the host exposing Display Control."
+              "text": "GNOME Remote Desktop on Ubuntu is the reference setup tested on Quest 3. Remote Login supports multiple screens; Desktop Sharing mirrors one screen. xrdp 0.9.24 with Xorg has been verified with one to three screens at connection, but changing the screen count requires a reconnect in the tested setup. Initial multi-screen support does not require live Display Control. Other servers and versions are not automatically covered by these tests."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I add or remove screens while connected?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the minus and plus controls in the dock, within your edition's limit. GNOME Remote Login and Windows Server 2025 have been tested with live changes. A slow confirmation keeps the desktop usable; waiting alone does not trigger a reconnect. If the change is unavailable or interrupts the connection, the app explains the fallback and reconnects once with the requested screen count. You can also choose Connection → Reconnect, with a warning that it interrupts the session."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does the app say Desktop starting…?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Signing in and showing the first desktop image are separate steps. GNOME Remote Login can take around ten seconds to start a session. The connection form stays visible until an actual image has been presented, rather than exposing a blank panel. Waiting messages, errors and reconnect notices appear below the dock; use Details for longer diagnostics."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if accents appear as Unicode escapes in the clipboard?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Text is preserved exactly by default, including literal escapes in code and JSON. Some GNOME server versions escape accented characters. For an affected host, open Compatibility and enable Decode clipboard Unicode escapes; the choice is remembered for that address and port. It applies only to text received from the server and can alter literal escapes, so leave it off on unaffected hosts. It does not repair the headset-to-server direction; that needs a server-side fix. Clipboard sharing is text only."
             }
           },
           {
@@ -726,6 +796,7 @@
       <li><a href="#features">Features</a></li>
       <li><a href="#ultra">Free &amp; Ultra</a></li>
       <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#compatibility">Compatibility</a></li>
       <li><a href="#setup">Setup</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -738,9 +809,9 @@
   <div class="hero-container">
     <h1>Your desktop in your room.</h1>
     <p class="tagline">
-      ByteStudio Remote Desktop brings your Windows or Linux desktop into Meta Quest with
-      low-latency video, audio and passthrough. Any standard RDP host works — free to download,
-      and Ultra adds a third screen, curved panels and layouts.
+      Bring your Windows or Linux desktop into Meta Quest over standard RDP, with responsive
+      video, audio and passthrough. Tested with GNOME Remote Desktop and Windows Server 2025.
+      Start with up to two flat screens for free; Ultra adds a third screen, curved panels and layouts.
     </p>
     <div class="cta-buttons">
       <a class="btn btn-primary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="hero">Get it on Meta Horizon Store</a>
@@ -750,7 +821,7 @@
     <div class="badges">
       <span class="badge">Quest 3 · Quest 3S</span>
       <span class="badge">Windows · Linux · RDP</span>
-      <span class="badge">H.264 hardware decoding</span>
+      <span class="badge">Up to 3 screens</span>
       <span class="badge">Certificate pinning</span>
     </div>
   </div>
@@ -760,40 +831,50 @@
   <p class="section-kicker">Why it feels native</p>
   <h2>A remote desktop built for VR, not a window in space</h2>
   <p class="section-lead">
-    The desktop is a panel you can move, resize and read. Passthrough keeps your hands, keyboard and
-    room visible, and the pointer is filtered so pointing at a small menu stays calm.
+    Move, resize and recenter your desktop around you. Passthrough keeps your hands, keyboard and
+    room visible. Rendering, input and connection handling are tuned for everyday work, not just a demo.
   </p>
 
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">🖥️</div>
       <h3>Readable at panel size</h3>
-      <p>Up to 1600×900 per screen with Qualcomm H.264 decoding, sized for text rather than for a demo.</p>
+      <p>Resolution adapts to the number of screens, up to 1600×900 for one screen. Hardware H.264 decoding is used when the host supports it.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">👁️</div>
       <h3>Passthrough by default</h3>
-      <p>Your hands, keyboard and room stay visible around the desktop. Dim the room independently when you want focus.</p>
+      <p>Your hands, keyboard and room stay visible around the desktop. Dim the room independently for focus; your brightness setting is remembered.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🖱️</div>
       <h3>Stabilized pointer</h3>
-      <p>Filtering and dual-hand arbitration keep the cursor precise, with drag across screens handled as one gesture.</p>
+      <p>Filtering and dual-hand arbitration keep the cursor precise. Drag windows across screen seams in one gesture; resizing a panel does not move the remote cursor.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">⌨️</div>
       <h3>Keyboards that work</h3>
-      <p>Bluetooth keyboard, the headset virtual keyboard, and paste from the headset clipboard into the desktop.</p>
+      <p>Use a Bluetooth keyboard or open the headset keyboard with A/X or the dock. Typed paste stays tied to its original session when you change connections.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔊</div>
-      <h3>Audio and clipboard</h3>
-      <p>Desktop audio plays in the headset, and text can be copied both ways between the two machines.</p>
+      <h3>Responsive video and audio</h3>
+      <p>Video presentation runs separately from network reads, so drawing a frame does not hold up incoming desktop audio. Playback still depends on your host and network.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔒</div>
       <h3>Direct and pinned</h3>
       <p>An encrypted RDP connection straight to your PC. The server certificate is pinned on first use, like SSH.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" aria-hidden="true">1 · 2 · 3</div>
+      <h3>Screens that follow your session</h3>
+      <p>Add or remove screens from the dock within your edition's limit. The app waits for the host's actual layout and explains when a reconnect is needed.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" aria-hidden="true">↔</div>
+      <h3>Reliable text clipboard</h3>
+      <p>Copy text both ways, with exact text preserved by default. Paste waits for the server's acknowledgement; an optional setting handles affected GNOME Unicode escapes.</p>
     </div>
   </div>
 </section>
@@ -802,8 +883,8 @@
   <p class="section-kicker">Free &amp; Ultra</p>
   <h2>Start free. Unlock more desk when you need it.</h2>
   <p class="section-lead">
-    The free edition is a complete remote desktop with two flat screens. Ultra is a one-time
-    purchase inside the app, and you can switch back to flat at any time.
+    The free edition is a complete remote desktop with up to two flat screens. Ultra is a one-time
+    purchase inside the app, and you can switch back to flat. The host determines the available screens.
   </p>
 
   <div class="plans">
@@ -814,8 +895,8 @@
       </div>
       <p class="plan-price">Download at no cost</p>
       <ul>
-        <li>Two flat screens, side by side</li>
-        <li>Audio, keyboard and pointer</li>
+        <li>Up to two flat screens, side by side</li>
+        <li>Audio, text clipboard, keyboard and pointer</li>
         <li>Passthrough and room dimming</li>
         <li>Drag, move and resize panels</li>
         <li>Encrypted connection with pinning</li>
@@ -831,7 +912,7 @@
       <p class="plan-price">Price shown in the Store</p>
       <ul>
         <li>Everything in Free</li>
-        <li>A third screen, hosted by your PC</li>
+        <li>Up to three screens, hosted by your PC</li>
         <li>Curved panels, switchable back to flat</li>
         <li>Layout presets: side by side or stacked</li>
         <li>Built for wide desks and multi-monitor work</li>
@@ -851,19 +932,79 @@
 
   <div class="gallery">
     <div class="gallery-item" onclick="openModal(0)">
-      <img src="images/ultra-01.png" width="2560" height="1440" loading="lazy" alt="Two screens side by side in Meta Quest">
-      <div class="gallery-caption">Side by side — the classic layout</div>
+      <img src="images/ultra-01.jpg" width="2560" height="1440" loading="lazy" alt="Two curved screens stacked in Meta Quest with the room dimmed">
+      <div class="gallery-caption">Stacked two screens, curved, room dimmed</div>
     </div>
     <div class="gallery-item" onclick="openModal(1)">
-      <img src="images/ultra-02.png" width="2560" height="1440" loading="lazy" alt="Two screens stacked vertically in Meta Quest">
-      <div class="gallery-caption">Stacked — a taller column for documents</div>
+      <img src="images/ultra-02.jpg" width="2560" height="1440" loading="lazy" alt="Windows desktop across three flat screens in Meta Quest with the room dimmed">
+      <div class="gallery-caption">Ultra: three flat screens, Windows host, room dimmed</div>
     </div>
     <div class="gallery-item" onclick="openModal(2)">
       <img src="images/ultra-03.png" width="2560" height="1440" loading="lazy" alt="Three curved screens with the room dimmed">
       <div class="gallery-caption">Ultra: three screens, curved, room dimmed</div>
     </div>
   </div>
-  <p class="gallery-note">Screenshots show an Ubuntu host. The app connects to any standard RDP server, Windows included.</p>
+  <p class="gallery-note">Screenshots show Linux and Windows desktops. See the compatibility table for tested hosts and their limits.</p>
+</section>
+
+<section id="compatibility">
+  <p class="section-kicker">Windows &amp; Linux</p>
+  <h2 id="compatibility-heading">Compatibility at a glance</h2>
+  <p class="section-lead">
+    Standard RDP, with results tied to the server and mode actually tested. Free allows up to two
+    screens and Ultra up to three; the host must provide the requested layout.
+  </p>
+
+  <div class="compatibility-scroll" tabindex="0" role="region" aria-labelledby="compatibility-heading">
+    <table class="compatibility-table">
+      <caption>Compatibility checks — November 2026</caption>
+      <thead>
+        <tr>
+          <th scope="col">RDP host</th>
+          <th scope="col">Screens at connection</th>
+          <th scope="col">Change screen count</th>
+          <th scope="col">Verification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">GNOME Remote Login<small>Ubuntu 26.04</small></th>
+          <td>1–3</td>
+          <td>Without reconnecting</td>
+          <td>Tested on Quest 3</td>
+        </tr>
+        <tr>
+          <th scope="row">GNOME Desktop Sharing</th>
+          <td>1, imposed by the host</td>
+          <td>Not available in this mode</td>
+          <td>Tested on Quest 3</td>
+        </tr>
+        <tr>
+          <th scope="row">Windows Server 2025<small>Native RDP with NLA</small></th>
+          <td>1–3</td>
+          <td>Without reconnecting</td>
+          <td>Tested on Quest 3</td>
+        </tr>
+        <tr>
+          <th scope="row">xrdp 0.9.24 / Xorg<small>Ubuntu 24.04 + XFCE</small></th>
+          <td>1–3, verified on the server</td>
+          <td>Reconnect needed in this setup</td>
+          <td>Initial layout verified; updated Quest flow still to validate</td>
+        </tr>
+        <tr>
+          <th scope="row">Windows 10/11<small>Pro / Enterprise</small></th>
+          <td>Not yet tested here</td>
+          <td>Not yet tested here</td>
+          <td>RDP-capable; not yet validated</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="compatibility-note">
+    GNOME Remote Login creates a remote session; Desktop Sharing mirrors an existing desktop.
+    Automatic login can cause GNOME to reuse a single-screen local session. The xrdp result applies
+    to the version above, not every xrdp server. Windows Home cannot host RDP.
+  </p>
 </section>
 
 <section id="setup">
@@ -879,16 +1020,16 @@
     <div class="step">
       <h3>Enable Remote Desktop on your PC</h3>
       <p>
-        <strong>Windows 10/11 Pro or Enterprise:</strong> Settings → System → Remote Desktop, turn it
-        on. Home editions cannot host RDP.<br>
-        <strong>Linux:</strong> GNOME Settings → Sharing → Remote Desktop, turn it on and set a
-        username and password.<br>
-        In both cases, note the PC's local IP address.
+        <strong>Windows:</strong> enable Remote Desktop in System settings on Server or a
+        Pro / Enterprise desktop edition.<br>
+        <strong>GNOME:</strong> Settings → System → Remote Desktop (or Sharing on older versions).
+        Choose Remote Login for multiple screens, or Desktop Sharing for one.<br>
+        Other Linux desktops need an RDP server such as xrdp. Note the host's IP address and RDP port.
       </p>
     </div>
     <div class="step">
       <h3>Connect from the headset</h3>
-      <p>Open the app, enter the IP address, username and password, then connect. Your desktop appears as a panel you can move and resize.</p>
+      <p>Enter the host address, port and RDP credentials. The app shows startup progress and keeps the form visible until the first desktop image is ready. Then move, resize or recenter your panels.</p>
     </div>
   </div>
 </section>
@@ -902,7 +1043,7 @@
       <h3>What you need</h3>
       <ul>
         <li>Meta Quest 3 or Quest 3S</li>
-        <li>Windows 10/11 Pro or Enterprise with Remote Desktop enabled, or a Linux RDP host</li>
+        <li>A Windows or Linux RDP host; check the compatibility table above</li>
         <li>The headset and the PC on the same local network</li>
         <li>Ethernet or Wi-Fi 6 recommended for smooth video</li>
       </ul>
@@ -910,10 +1051,10 @@
     <div class="requirement-col">
       <h3>What to expect</h3>
       <ul class="limitation">
-        <li>Any standard RDP server; Ubuntu GNOME is the reference setup we test against</li>
-        <li>Windows 10/11 Pro is expected to work and to expose Display Control, but it is unverified</li>
-        <li>On Linux, multi-screen depends on the host exposing Display Control</li>
-        <li>Frame rate follows the host, around 30 fps on GNOME</li>
+        <li>Screen count and live changes depend on the host, not just your edition</li>
+        <li>A reconnect may be needed for a screen-count change and can rearrange remote windows</li>
+        <li>Video frame rate and audio continuity depend on the host and network</li>
+        <li>The host must offer audio redirection; xrdp may need an audio module</li>
         <li>Clipboard sharing is text only; there is no file transfer</li>
         <li>A network drop ends the session; reconnect from the app</li>
       </ul>
@@ -921,13 +1062,12 @@
   </div>
 
   <div class="callout">
-    <h3>Windows is experimental for now</h3>
+    <h3>Clear status, without unnecessary interruptions</h3>
     <p>
-      The app speaks standard RDP, and Windows 10/11 Pro or Enterprise exposes an RDP server, so it
-      is expected to work. We have not officially tested Windows yet, so treat it as experimental
-      until it is validated. If you try it, tell us what happened — Windows version, app version,
-      and whether the third screen appeared:
-      <a href="mailto:bytestudio.rdp@gmail.com?subject=Windows%20test%20feedback%20%E2%80%94%20ByteStudio%20Remote%20Desktop">bytestudio.rdp@gmail.com</a>.
+      A slow desktop startup or screen-layout confirmation is shown as a wait, not treated as a
+      failure. Notifications below the dock keep active waits and errors visible, with
+      <strong>Details</strong> for longer diagnostics. You can keep working while a layout request
+      is pending, or choose <strong>Connection → Reconnect</strong> after the interruption warning.
     </p>
   </div>
 </section>
@@ -939,7 +1079,7 @@
   <div class="faq">
     <details>
       <summary>Is the app free?</summary>
-      <p>Yes. The free edition is a complete remote desktop with two flat screens. Ultra is a one-time purchase made inside the app, with no subscription.</p>
+      <p>Yes. The free edition is a complete remote desktop with up to two flat screens, subject to host support. Ultra is a one-time purchase made inside the app, with no subscription.</p>
     </details>
     <details>
       <summary>What exactly does Ultra add?</summary>
@@ -955,11 +1095,23 @@
     </details>
     <details>
       <summary>Does it work with Windows?</summary>
-      <p>In principle, yes, but Windows is not officially supported yet because we have not tested it. Windows 10/11 Pro or Enterprise exposes a standard RDP server: enable Remote Desktop in Settings, then enter the PC's IP address, username and password in the app. Home editions cannot host RDP. Treat Windows as experimental, and if you try it, send us feedback at <a href="mailto:bytestudio.rdp@gmail.com?subject=Windows%20test%20feedback%20%E2%80%94%20ByteStudio%20Remote%20Desktop">bytestudio.rdp@gmail.com</a>, including whether the third screen appeared.</p>
+      <p>Yes. Windows Server 2025 has been tested on Quest 3 with one to three screens and screen-count changes without reconnecting. Windows 10/11 Pro or Enterprise can host RDP, but these desktop editions have not yet been tested here. Windows Home cannot host RDP. See the compatibility table for the scope of testing.</p>
     </details>
     <details>
       <summary>Which Linux desktops work?</summary>
-      <p>The app speaks RDP, so any Linux box with an RDP server can work. Ubuntu with GNOME Remote Desktop is the reference setup we test against. Multi-screen features depend on the host exposing Display Control.</p>
+      <p>GNOME Remote Desktop on Ubuntu is the reference setup tested on Quest 3. Remote Login supports multiple screens; Desktop Sharing mirrors one screen. xrdp 0.9.24 with Xorg has been verified with one to three screens at connection, but changing the screen count requires a reconnect in the tested setup. Initial multi-screen support does not require live Display Control. Other servers and versions are not automatically covered by these tests.</p>
+    </details>
+    <details>
+      <summary>Can I add or remove screens while connected?</summary>
+      <p>Use the minus and plus controls in the dock, within your edition's limit. GNOME Remote Login and Windows Server 2025 have been tested with live changes. A slow confirmation keeps the desktop usable; waiting alone does not trigger a reconnect. If the change is unavailable or interrupts the connection, the app explains the fallback and reconnects once with the requested screen count. You can also choose Connection → Reconnect, with a warning that it interrupts the session.</p>
+    </details>
+    <details>
+      <summary>Why does the app say Desktop starting…?</summary>
+      <p>Signing in and showing the first desktop image are separate steps. GNOME Remote Login can take around ten seconds to start a session. The connection form stays visible until an actual image has been presented, rather than exposing a blank panel. Waiting messages, errors and reconnect notices appear below the dock; use Details for longer diagnostics.</p>
+    </details>
+    <details>
+      <summary>What if accents appear as Unicode escapes in the clipboard?</summary>
+      <p>Text is preserved exactly by default, including literal escapes in code and JSON. Some GNOME server versions escape accented characters. For an affected host, open Compatibility and enable Decode clipboard Unicode escapes; the choice is remembered for that address and port. It applies only to text received from the server and can alter literal escapes, so leave it off on unaffected hosts. It does not repair the headset-to-server direction; that needs a server-side fix. Clipboard sharing is text only.</p>
     </details>
     <details>
       <summary>Where does my data go?</summary>
@@ -1000,8 +1152,8 @@
 
 <script>
   const screenshots = [
-    'images/ultra-01.png',
-    'images/ultra-02.png',
+    'images/ultra-01.jpg',
+    'images/ultra-02.jpg',
     'images/ultra-03.png'
   ];
   let currentSlide = 0;
