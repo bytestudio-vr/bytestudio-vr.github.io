@@ -68,8 +68,8 @@ data; visits before activation cannot be recovered.
 
 The [Umami dashboard](https://cloud.umami.is/) shows page views, visits, visitors, referrers,
 countries, browsers and devices for the product page. The policy loads no analytics script.
-The **Events** view contains `meta_store_click` and
-`apk_download_click`. For Store clicks, the `placement` property distinguishes `navigation`, `hero`,
+The **Events** view contains `meta_store_click`. For Store clicks, the `placement` property
+distinguishes `navigation`, `hero`,
 `free_plan`, `ultra_plan`, `final_cta` and `footer`. These measure link clicks, not completed downloads,
 installations or purchases.
 
@@ -81,7 +81,7 @@ privacy settings can make totals lower than the actual traffic.
 
 To verify activation, visit the deployed site in a browser without those blocking settings. A request
 to `https://cloud.umami.is/script.js` should appear in the Network panel, followed by analytics
-requests. Open a Store or APK link and check Umami's realtime view, then **Events**. To disable
+requests. Open a Store link and check Umami's realtime view, then **Events**. To disable
 tracking, set `websiteId` back to an empty string. No analytics requests are made in local previews
 or while the identifier is empty, and all links still work if Umami is unavailable.
 
