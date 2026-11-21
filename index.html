@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ByteStudio Remote Desktop — Meta Quest 3 RDP Client</title>
-  <meta name="description" content="Remote desktop for Meta Quest 3 and 3S. Tested with GNOME and Windows Server 2025. Up to two screens free, three with Ultra, plus audio and text clipboard.">
+  <title data-i18n="index.title">ByteStudio Remote Desktop — Meta Quest 3 RDP Client</title>
+  <meta name="description" content="Remote desktop for Meta Quest 3 and 3S. Tested with GNOME and Windows Server 2025. Up to two screens free, three with Ultra, plus audio and text clipboard." data-i18n="index.description" data-i18n-attr="content">
   <meta name="theme-color" content="#0f0f1e">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://bytestudio-vr.github.io/">
@@ -13,22 +13,24 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ByteStudio VR">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content="en_US" data-i18n="index.locale" data-i18n-attr="content">
   <meta property="og:url" content="https://bytestudio-vr.github.io/">
-  <meta property="og:title" content="ByteStudio Remote Desktop for Meta Quest 3">
-  <meta property="og:description" content="Your Windows or Linux desktop, in your room. Tested with GNOME and Windows Server 2025, with responsive video, audio and up to three screens.">
+  <meta property="og:title" content="ByteStudio Remote Desktop for Meta Quest 3" data-i18n="index.socialTitle" data-i18n-attr="content">
+  <meta property="og:description" content="Your Windows or Linux desktop, in your room. Tested with GNOME and Windows Server 2025, with responsive video, audio and up to three screens." data-i18n="index.socialDescription" data-i18n-attr="content">
   <meta property="og:image" content="https://bytestudio-vr.github.io/images/cover-landscape.png">
   <meta property="og:image:width" content="2560">
   <meta property="og:image:height" content="1440">
-  <meta property="og:image:alt" content="ByteStudio Remote Desktop running on Meta Quest over a desk">
+  <meta property="og:image:alt" content="ByteStudio Remote Desktop running on Meta Quest over a desk" data-i18n="images.cover" data-i18n-attr="content">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ByteStudio Remote Desktop for Meta Quest 3">
-  <meta name="twitter:description" content="Your Windows or Linux desktop, in your room. Tested with GNOME and Windows Server 2025, with responsive video, audio and up to three screens.">
+  <meta name="twitter:title" content="ByteStudio Remote Desktop for Meta Quest 3" data-i18n="index.socialTitle" data-i18n-attr="content">
+  <meta name="twitter:description" content="Your Windows or Linux desktop, in your room. Tested with GNOME and Windows Server 2025, with responsive video, audio and up to three screens." data-i18n="index.socialDescription" data-i18n-attr="content">
   <meta name="twitter:image" content="https://bytestudio-vr.github.io/images/cover-landscape.png">
 
   <link rel="preload" as="image" href="images/cover-landscape.png" fetchpriority="high">
 
   <script defer src="analytics.js"></script>
+  <link rel="stylesheet" href="i18n.css">
+  <script defer src="i18n.js"></script>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -75,6 +77,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -88,7 +91,7 @@
       white-space: nowrap;
     }
 
-    .logo img { width: 34px; height: 34px; border-radius: 8px; }
+    .logo img { width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0; }
 
     .nav-links {
       display: flex;
@@ -285,7 +288,7 @@
     /* Plans */
     .plans {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 1.5rem;
       align-items: stretch;
       margin-bottom: 1.5rem;
@@ -632,6 +635,7 @@
     .modal-next { right: 8px; }
 
     @media (max-width: 820px) {
+      .logo { white-space: normal; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .requirements { grid-template-columns: 1fr; }
@@ -642,7 +646,7 @@
     }
   </style>
 
-  <script type="application/ld+json">
+  <script type="application/ld+json" data-site-schema>
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -793,44 +797,48 @@
       <span>ByteStudio Remote Desktop</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#ultra">Free &amp; Ultra</a></li>
-      <li><a href="#screenshots">Screenshots</a></li>
-      <li><a href="#compatibility">Compatibility</a></li>
-      <li><a href="#setup">Setup</a></li>
+      <li><a href="#features" data-i18n="nav.features">Features</a></li>
+      <li><a href="#ultra" data-i18n="nav.editions">Free &amp; Ultra</a></li>
+      <li><a href="#screenshots" data-i18n="nav.screenshots">Screenshots</a></li>
+      <li><a href="#compatibility" data-i18n="nav.compatibility">Compatibility</a></li>
+      <li><a href="#setup" data-i18n="nav.setup">Setup</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a class="btn btn-primary btn-small nav-cta" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="navigation">Get the app</a>
+    <a class="btn btn-primary btn-small nav-cta" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="navigation" data-i18n="cta.getApp">Get the app</a>
+    <div class="language-switch" role="group" aria-label="Language / Langue" hidden>
+      <button type="button" data-language-button="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+      <button type="button" data-language-button="fr" lang="fr" aria-label="Français" aria-pressed="false">FR</button>
+    </div>
   </div>
 </nav>
 
 <section class="hero" id="top">
-  <div class="hero-banner" role="img" aria-label="ByteStudio Remote Desktop running on Meta Quest over a desk"></div>
+  <div class="hero-banner" role="img" aria-label="ByteStudio Remote Desktop running on Meta Quest over a desk" data-i18n="images.cover" data-i18n-attr="aria-label"></div>
   <div class="hero-container">
-    <h1>Your desktop in your room.</h1>
-    <p class="tagline">
+    <h1 data-i18n="hero.title">Your desktop in your room.</h1>
+    <p class="tagline" data-i18n="hero.description">
       Bring your Windows or Linux desktop into Meta Quest over standard RDP, with responsive
       video, audio and passthrough. Tested with GNOME Remote Desktop and Windows Server 2025.
       Start with up to two flat screens for free; Ultra adds a third screen, curved panels and layouts.
     </p>
     <div class="cta-buttons">
-      <a class="btn btn-primary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="hero">Get it on Meta Horizon Store</a>
-      <a class="btn btn-secondary" href="#ultra">See what Ultra adds</a>
+      <a class="btn btn-primary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="hero" data-i18n="cta.store">Get it on Meta Horizon Store</a>
+      <a class="btn btn-secondary" href="#ultra" data-i18n="cta.ultraDetails">See what Ultra adds</a>
     </div>
-    <p class="hero-note">Free download · Ultra unlocked inside the app · No account, no cloud</p>
+    <p class="hero-note" data-i18n="hero.note">Free download · Ultra unlocked inside the app · No account, no cloud</p>
     <div class="badges">
       <span class="badge">Quest 3 · Quest 3S</span>
       <span class="badge">Windows · Linux · RDP</span>
-      <span class="badge">Up to 3 screens</span>
-      <span class="badge">Certificate pinning</span>
+      <span class="badge" data-i18n="hero.screens">Up to 3 screens</span>
+      <span class="badge" data-i18n="hero.pinning">Certificate pinning</span>
     </div>
   </div>
 </section>
 
 <section id="features">
-  <p class="section-kicker">Why it feels native</p>
-  <h2>A remote desktop built for VR, not a window in space</h2>
-  <p class="section-lead">
+  <p class="section-kicker" data-i18n="features.kicker">Why it feels native</p>
+  <h2 data-i18n="features.title">A remote desktop built for VR, not a window in space</h2>
+  <p class="section-lead" data-i18n="features.description">
     Move, resize and recenter your desktop around you. Passthrough keeps your hands, keyboard and
     room visible. Rendering, input and connection handling are tuned for everyday work, not just a demo.
   </p>
@@ -838,51 +846,51 @@
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">🖥️</div>
-      <h3>Readable at panel size</h3>
-      <p>Resolution adapts to the number of screens, up to 1600×900 for one screen. Hardware H.264 decoding is used when the host supports it.</p>
+      <h3 data-i18n="features.resolution.title">Readable at panel size</h3>
+      <p data-i18n="features.resolution.description">Resolution adapts to the number of screens, up to 1600×900 for one screen. Hardware H.264 decoding is used when the host supports it.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">👁️</div>
-      <h3>Passthrough by default</h3>
-      <p>Your hands, keyboard and room stay visible around the desktop. Dim the room independently for focus; your brightness setting is remembered.</p>
+      <h3 data-i18n="features.passthrough.title">Passthrough by default</h3>
+      <p data-i18n="features.passthrough.description">Your hands, keyboard and room stay visible around the desktop. Dim the room independently for focus; your brightness setting is remembered.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🖱️</div>
-      <h3>Stabilized pointer</h3>
-      <p>Filtering and dual-hand arbitration keep the cursor precise. Drag windows across screen seams in one gesture; resizing a panel does not move the remote cursor.</p>
+      <h3 data-i18n="features.pointer.title">Stabilized pointer</h3>
+      <p data-i18n="features.pointer.description">Filtering and dual-hand arbitration keep the cursor precise. Drag windows across screen seams in one gesture; resizing a panel does not move the remote cursor.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">⌨️</div>
-      <h3>Keyboards that work</h3>
-      <p>Use a Bluetooth keyboard or open the headset keyboard with A/X or the dock. Typed paste stays tied to its original session when you change connections.</p>
+      <h3 data-i18n="features.keyboard.title">Keyboards that work</h3>
+      <p data-i18n="features.keyboard.description">Use a Bluetooth keyboard or open the headset keyboard with A/X or the dock. Typed paste stays tied to its original session when you change connections.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔊</div>
-      <h3>Responsive video and audio</h3>
-      <p>Video presentation runs separately from network reads, so drawing a frame does not hold up incoming desktop audio. Playback still depends on your host and network.</p>
+      <h3 data-i18n="features.audio.title">Responsive video and audio</h3>
+      <p data-i18n="features.audio.description">Video presentation runs separately from network reads, so drawing a frame does not hold up incoming desktop audio. Playback still depends on your host and network.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔒</div>
-      <h3>Direct and pinned</h3>
-      <p>An encrypted RDP connection straight to your PC. The server certificate is pinned on first use, like SSH.</p>
+      <h3 data-i18n="features.security.title">Direct and pinned</h3>
+      <p data-i18n="features.security.description">An encrypted RDP connection straight to your PC. The server certificate is pinned on first use, like SSH.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon" aria-hidden="true">1 · 2 · 3</div>
-      <h3>Screens that follow your session</h3>
-      <p>Add or remove screens from the dock within your edition's limit. The app waits for the host's actual layout and explains when a reconnect is needed.</p>
+      <h3 data-i18n="features.screens.title">Screens that follow your session</h3>
+      <p data-i18n="features.screens.description">Add or remove screens from the dock within your edition's limit. The app waits for the host's actual layout and explains when a reconnect is needed.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon" aria-hidden="true">↔</div>
-      <h3>Reliable text clipboard</h3>
-      <p>Copy text both ways, with exact text preserved by default. Paste waits for the server's acknowledgement; an optional setting handles affected GNOME Unicode escapes.</p>
+      <h3 data-i18n="features.clipboard.title">Reliable text clipboard</h3>
+      <p data-i18n="features.clipboard.description">Copy text both ways, with exact text preserved by default. Paste waits for the server's acknowledgement; an optional setting handles affected GNOME Unicode escapes.</p>
     </div>
   </div>
 </section>
 
 <section id="ultra">
-  <p class="section-kicker">Free &amp; Ultra</p>
-  <h2>Start free. Unlock more desk when you need it.</h2>
-  <p class="section-lead">
+  <p class="section-kicker" data-i18n="nav.editions">Free &amp; Ultra</p>
+  <h2 data-i18n="editions.title">Start free. Unlock more desk when you need it.</h2>
+  <p class="section-lead" data-i18n="editions.description">
     The free edition is a complete remote desktop with up to two flat screens. Ultra is a one-time
     purchase inside the app, and you can switch back to flat. The host determines the available screens.
   </p>
@@ -890,117 +898,117 @@
   <div class="plans">
     <div class="plan">
       <div class="plan-head">
-        <h3>Free</h3>
-        <span class="plan-tag">Included</span>
+        <h3 data-i18n="editions.free.title">Free</h3>
+        <span class="plan-tag" data-i18n="editions.free.tag">Included</span>
       </div>
-      <p class="plan-price">Download at no cost</p>
+      <p class="plan-price" data-i18n="editions.free.price">Download at no cost</p>
       <ul>
-        <li>Up to two flat screens, side by side</li>
-        <li>Audio, text clipboard, keyboard and pointer</li>
-        <li>Passthrough and room dimming</li>
-        <li>Drag, move and resize panels</li>
-        <li>Encrypted connection with pinning</li>
+        <li data-i18n="editions.free.screens">Up to two flat screens, side by side</li>
+        <li data-i18n="editions.free.input">Audio, text clipboard, keyboard and pointer</li>
+        <li data-i18n="editions.free.passthrough">Passthrough and room dimming</li>
+        <li data-i18n="editions.free.panels">Drag, move and resize panels</li>
+        <li data-i18n="editions.free.security">Encrypted connection with pinning</li>
       </ul>
-      <a class="btn btn-secondary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="free_plan">Get the free app</a>
+      <a class="btn btn-secondary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="free_plan" data-i18n="cta.free">Get the free app</a>
     </div>
 
     <div class="plan plan-ultra">
       <div class="plan-head">
         <h3>Ultra</h3>
-        <span class="plan-tag">One-time in-app purchase</span>
+        <span class="plan-tag" data-i18n="editions.ultra.tag">One-time in-app purchase</span>
       </div>
-      <p class="plan-price">Price shown in the Store</p>
+      <p class="plan-price" data-i18n="editions.ultra.price">Price shown in the Store</p>
       <ul>
-        <li>Everything in Free</li>
-        <li>Up to three screens, hosted by your PC</li>
-        <li>Curved panels, switchable back to flat</li>
-        <li>Layout presets: side by side or stacked</li>
-        <li>Built for wide desks and multi-monitor work</li>
+        <li data-i18n="editions.ultra.free">Everything in Free</li>
+        <li data-i18n="editions.ultra.screens">Up to three screens, hosted by your PC</li>
+        <li data-i18n="editions.ultra.curved">Curved panels, switchable back to flat</li>
+        <li data-i18n="editions.ultra.layouts">Layout presets: side by side or stacked</li>
+        <li data-i18n="editions.ultra.work">Built for wide desks and multi-monitor work</li>
       </ul>
-      <a class="btn btn-ultra" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="ultra_plan">Get the app, then unlock Ultra</a>
+      <a class="btn btn-ultra" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="ultra_plan" data-i18n="cta.unlock">Get the app, then unlock Ultra</a>
     </div>
   </div>
 </section>
 
 <section id="screenshots">
-  <p class="section-kicker">In the headset</p>
-  <h2>One, two or three screens — the way you arrange them</h2>
-  <p class="section-lead">
+  <p class="section-kicker" data-i18n="gallery.kicker">In the headset</p>
+  <h2 data-i18n="gallery.title">One, two or three screens — the way you arrange them</h2>
+  <p class="section-lead" data-i18n="gallery.description">
     Ultra adds the stacked layout, curved panels and a third screen. The remote desktop stays a
     normal row of monitors; the panels are what you arrange in the room.
   </p>
 
   <div class="gallery">
     <div class="gallery-item" onclick="openModal(0)">
-      <img src="images/ultra-01.jpg" width="2560" height="1440" loading="lazy" alt="Two curved screens stacked in Meta Quest with the room dimmed">
-      <div class="gallery-caption">Stacked two screens, curved, room dimmed</div>
+      <img src="images/ultra-01.jpg" width="2560" height="1440" loading="lazy" alt="Two curved screens stacked in Meta Quest with the room dimmed" data-i18n="images.stacked" data-i18n-attr="alt">
+      <div class="gallery-caption" data-i18n="gallery.stacked">Stacked two screens, curved, room dimmed</div>
     </div>
     <div class="gallery-item" onclick="openModal(1)">
-      <img src="images/ultra-02.jpg" width="2560" height="1440" loading="lazy" alt="Windows desktop across three flat screens in Meta Quest with the room dimmed">
-      <div class="gallery-caption">Ultra: three flat screens, Windows host, room dimmed</div>
+      <img src="images/ultra-02.jpg" width="2560" height="1440" loading="lazy" alt="Windows desktop across three flat screens in Meta Quest with the room dimmed" data-i18n="images.windows" data-i18n-attr="alt">
+      <div class="gallery-caption" data-i18n="gallery.windows">Ultra: three flat screens, Windows host, room dimmed</div>
     </div>
     <div class="gallery-item" onclick="openModal(2)">
-      <img src="images/ultra-03.png" width="2560" height="1440" loading="lazy" alt="Three curved screens with the room dimmed">
-      <div class="gallery-caption">Ultra: three screens, curved, room dimmed</div>
+      <img src="images/ultra-03.png" width="2560" height="1440" loading="lazy" alt="Three curved screens with the room dimmed" data-i18n="images.curved" data-i18n-attr="alt">
+      <div class="gallery-caption" data-i18n="gallery.curved">Ultra: three screens, curved, room dimmed</div>
     </div>
   </div>
-  <p class="gallery-note">Screenshots show Linux and Windows desktops. See the compatibility table for tested hosts and their limits.</p>
+  <p class="gallery-note" data-i18n="gallery.note">Screenshots show Linux and Windows desktops. See the compatibility table for tested hosts and their limits.</p>
 </section>
 
 <section id="compatibility">
-  <p class="section-kicker">Windows &amp; Linux</p>
-  <h2 id="compatibility-heading">Compatibility at a glance</h2>
-  <p class="section-lead">
+  <p class="section-kicker" data-i18n="compatibility.kicker">Windows &amp; Linux</p>
+  <h2 id="compatibility-heading" data-i18n="compatibility.title">Compatibility at a glance</h2>
+  <p class="section-lead" data-i18n="compatibility.description">
     Standard RDP, with results tied to the server and mode actually tested. Free allows up to two
     screens and Ultra up to three; the host must provide the requested layout.
   </p>
 
   <div class="compatibility-scroll" tabindex="0" role="region" aria-labelledby="compatibility-heading">
     <table class="compatibility-table">
-      <caption>Compatibility checks — November 2026</caption>
+      <caption data-i18n="compatibility.caption">Compatibility checks — November 2026</caption>
       <thead>
         <tr>
-          <th scope="col">RDP host</th>
-          <th scope="col">Screens at connection</th>
-          <th scope="col">Change screen count</th>
-          <th scope="col">Verification</th>
+          <th scope="col" data-i18n="compatibility.host">RDP host</th>
+          <th scope="col" data-i18n="compatibility.screens">Screens at connection</th>
+          <th scope="col" data-i18n="compatibility.change">Change screen count</th>
+          <th scope="col" data-i18n="compatibility.verification">Verification</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row">GNOME Remote Login<small>Ubuntu 26.04</small></th>
           <td>1–3</td>
-          <td>Without reconnecting</td>
-          <td>Tested on Quest 3</td>
+          <td data-i18n="compatibility.live">Without reconnecting</td>
+          <td data-i18n="compatibility.tested">Tested on Quest 3</td>
         </tr>
         <tr>
           <th scope="row">GNOME Desktop Sharing</th>
-          <td>1, imposed by the host</td>
-          <td>Not available in this mode</td>
-          <td>Tested on Quest 3</td>
+          <td data-i18n="compatibility.sharingScreens">1, imposed by the host</td>
+          <td data-i18n="compatibility.sharingChange">Not available in this mode</td>
+          <td data-i18n="compatibility.tested">Tested on Quest 3</td>
         </tr>
         <tr>
-          <th scope="row">Windows Server 2025<small>Native RDP with NLA</small></th>
+          <th scope="row">Windows Server 2025<small data-i18n="compatibility.windowsDetails">Native RDP with NLA</small></th>
           <td>1–3</td>
-          <td>Without reconnecting</td>
-          <td>Tested on Quest 3</td>
+          <td data-i18n="compatibility.live">Without reconnecting</td>
+          <td data-i18n="compatibility.tested">Tested on Quest 3</td>
         </tr>
         <tr>
           <th scope="row">xrdp 0.9.24 / Xorg<small>Ubuntu 24.04 + XFCE</small></th>
-          <td>1–3, verified on the server</td>
-          <td>Reconnect needed in this setup</td>
-          <td>Initial layout verified; updated Quest flow still to validate</td>
+          <td data-i18n="compatibility.xrdpScreens">1–3, verified on the server</td>
+          <td data-i18n="compatibility.xrdpChange">Reconnect needed in this setup</td>
+          <td data-i18n="compatibility.xrdpVerification">Initial layout verified; updated Quest flow still to validate</td>
         </tr>
         <tr>
-          <th scope="row">Windows 10/11<small>Pro / Enterprise</small></th>
-          <td>Not yet tested here</td>
-          <td>Not yet tested here</td>
-          <td>RDP-capable; not yet validated</td>
+          <th scope="row">Windows 10/11<small data-i18n="compatibility.windowsEditions">Pro / Enterprise</small></th>
+          <td data-i18n="compatibility.untested">Not yet tested here</td>
+          <td data-i18n="compatibility.untested">Not yet tested here</td>
+          <td data-i18n="compatibility.windowsVerification">RDP-capable; not yet validated</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="compatibility-note">
+  <p class="compatibility-note" data-i18n="compatibility.note">
     GNOME Remote Login creates a remote session; Desktop Sharing mirrors an existing desktop.
     Automatic login can cause GNOME to reuse a single-screen local session. The xrdp result applies
     to the version above, not every xrdp server. Windows Home cannot host RDP.
@@ -1008,18 +1016,18 @@
 </section>
 
 <section id="setup">
-  <p class="section-kicker">Up and running</p>
-  <h2>Three steps to your desktop</h2>
-  <p class="section-lead">No sideloading and no Developer Mode. The app comes from the Meta Horizon Store.</p>
+  <p class="section-kicker" data-i18n="setup.kicker">Up and running</p>
+  <h2 data-i18n="setup.title">Three steps to your desktop</h2>
+  <p class="section-lead" data-i18n="setup.description">No sideloading and no Developer Mode. The app comes from the Meta Horizon Store.</p>
 
   <div class="steps">
     <div class="step">
-      <h3>Install from the Store</h3>
-      <p>Get ByteStudio Remote Desktop on your Quest from the Meta Horizon Store. It installs like any other app.</p>
+      <h3 data-i18n="setup.install.title">Install from the Store</h3>
+      <p data-i18n="setup.install.description">Get ByteStudio Remote Desktop on your Quest from the Meta Horizon Store. It installs like any other app.</p>
     </div>
     <div class="step">
-      <h3>Enable Remote Desktop on your PC</h3>
-      <p>
+      <h3 data-i18n="setup.host.title">Enable Remote Desktop on your PC</h3>
+      <p data-i18n="setup.host.description" data-i18n-html>
         <strong>Windows:</strong> enable Remote Desktop in System settings on Server or a
         Pro / Enterprise desktop edition.<br>
         <strong>GNOME:</strong> Settings → System → Remote Desktop (or Sharing on older versions).
@@ -1028,42 +1036,42 @@
       </p>
     </div>
     <div class="step">
-      <h3>Connect from the headset</h3>
-      <p>Enter the host address, port and RDP credentials. The app shows startup progress and keeps the form visible until the first desktop image is ready. Then move, resize or recenter your panels.</p>
+      <h3 data-i18n="setup.connect.title">Connect from the headset</h3>
+      <p data-i18n="setup.connect.description">Enter the host address, port and RDP credentials. The app shows startup progress and keeps the form visible until the first desktop image is ready. Then move, resize or recenter your panels.</p>
     </div>
   </div>
 </section>
 
 <section id="requirements">
-  <p class="section-kicker">Before you start</p>
-  <h2>Requirements &amp; limits</h2>
+  <p class="section-kicker" data-i18n="requirements.kicker">Before you start</p>
+  <h2 data-i18n="requirements.title">Requirements &amp; limits</h2>
 
   <div class="requirements">
     <div class="requirement-col">
-      <h3>What you need</h3>
+      <h3 data-i18n="requirements.needs">What you need</h3>
       <ul>
-        <li>Meta Quest 3 or Quest 3S</li>
-        <li>A Windows or Linux RDP host; check the compatibility table above</li>
-        <li>The headset and the PC on the same local network</li>
-        <li>Ethernet or Wi-Fi 6 recommended for smooth video</li>
+        <li data-i18n="requirements.headset">Meta Quest 3 or Quest 3S</li>
+        <li data-i18n="requirements.host">A Windows or Linux RDP host; check the compatibility table above</li>
+        <li data-i18n="requirements.network">The headset and the PC on the same local network</li>
+        <li data-i18n="requirements.wifi">Ethernet or Wi-Fi 6 recommended for smooth video</li>
       </ul>
     </div>
     <div class="requirement-col">
-      <h3>What to expect</h3>
+      <h3 data-i18n="requirements.expectations">What to expect</h3>
       <ul class="limitation">
-        <li>Screen count and live changes depend on the host, not just your edition</li>
-        <li>A reconnect may be needed for a screen-count change and can rearrange remote windows</li>
-        <li>Video frame rate and audio continuity depend on the host and network</li>
-        <li>The host must offer audio redirection; xrdp may need an audio module</li>
-        <li>Clipboard sharing is text only; there is no file transfer</li>
-        <li>A network drop ends the session; reconnect from the app</li>
+        <li data-i18n="requirements.screenLimit">Screen count and live changes depend on the host, not just your edition</li>
+        <li data-i18n="requirements.reconnect">A reconnect may be needed for a screen-count change and can rearrange remote windows</li>
+        <li data-i18n="requirements.performance">Video frame rate and audio continuity depend on the host and network</li>
+        <li data-i18n="requirements.audio">The host must offer audio redirection; xrdp may need an audio module</li>
+        <li data-i18n="requirements.clipboard">Clipboard sharing is text only; there is no file transfer</li>
+        <li data-i18n="requirements.disconnect">A network drop ends the session; reconnect from the app</li>
       </ul>
     </div>
   </div>
 
   <div class="callout">
-    <h3>Clear status, without unnecessary interruptions</h3>
-    <p>
+    <h3 data-i18n="status.title">Clear status, without unnecessary interruptions</h3>
+    <p data-i18n="status.description" data-i18n-html>
       A slow desktop startup or screen-layout confirmation is shown as a wait, not treated as a
       failure. Notifications below the dock keep active waits and errors visible, with
       <strong>Details</strong> for longer diagnostics. You can keep working while a layout request
@@ -1073,72 +1081,72 @@
 </section>
 
 <section id="faq">
-  <p class="section-kicker">Questions</p>
-  <h2>Good to know</h2>
+  <p class="section-kicker" data-i18n="faq.kicker">Questions</p>
+  <h2 data-i18n="faq.title">Good to know</h2>
 
   <div class="faq">
     <details>
-      <summary>Is the app free?</summary>
-      <p>Yes. The free edition is a complete remote desktop with up to two flat screens, subject to host support. Ultra is a one-time purchase made inside the app, with no subscription.</p>
+      <summary data-i18n="faq.free.question">Is the app free?</summary>
+      <p data-i18n="faq.free.answer">Yes. The free edition is a complete remote desktop with up to two flat screens, subject to host support. Ultra is a one-time purchase made inside the app, with no subscription.</p>
     </details>
     <details>
-      <summary>What exactly does Ultra add?</summary>
-      <p>A third screen, curved panels and layout presets. You can switch between flat and curved in the app settings; the choice is remembered and applied on the next launch.</p>
+      <summary data-i18n="faq.ultra.question">What exactly does Ultra add?</summary>
+      <p data-i18n="faq.ultra.answer">A third screen, curved panels and layout presets. You can switch between flat and curved in the app settings; the choice is remembered and applied on the next launch.</p>
     </details>
     <details>
-      <summary>How do I buy Ultra?</summary>
-      <p>Install the free app, open the connection form and use the Ultra card. The purchase is handled by the Meta Horizon Store and stays attached to your Meta account.</p>
+      <summary data-i18n="faq.buy.question">How do I buy Ultra?</summary>
+      <p data-i18n="faq.buy.answer">Install the free app, open the connection form and use the Ultra card. The purchase is handled by the Meta Horizon Store and stays attached to your Meta account.</p>
     </details>
     <details>
-      <summary>Do I need Developer Mode or a sideloaded APK?</summary>
-      <p>No. The app is distributed through the Meta Horizon Store and installs like any other Quest app.</p>
+      <summary data-i18n="faq.install.question">Do I need Developer Mode or a sideloaded APK?</summary>
+      <p data-i18n="faq.install.answer">No. The app is distributed through the Meta Horizon Store and installs like any other Quest app.</p>
     </details>
     <details>
-      <summary>Does it work with Windows?</summary>
-      <p>Yes. Windows Server 2025 has been tested on Quest 3 with one to three screens and screen-count changes without reconnecting. Windows 10/11 Pro or Enterprise can host RDP, but these desktop editions have not yet been tested here. Windows Home cannot host RDP. See the compatibility table for the scope of testing.</p>
+      <summary data-i18n="faq.windows.question">Does it work with Windows?</summary>
+      <p data-i18n="faq.windows.answer">Yes. Windows Server 2025 has been tested on Quest 3 with one to three screens and screen-count changes without reconnecting. Windows 10/11 Pro or Enterprise can host RDP, but these desktop editions have not yet been tested here. Windows Home cannot host RDP. See the compatibility table for the scope of testing.</p>
     </details>
     <details>
-      <summary>Which Linux desktops work?</summary>
-      <p>GNOME Remote Desktop on Ubuntu is the reference setup tested on Quest 3. Remote Login supports multiple screens; Desktop Sharing mirrors one screen. xrdp 0.9.24 with Xorg has been verified with one to three screens at connection, but changing the screen count requires a reconnect in the tested setup. Initial multi-screen support does not require live Display Control. Other servers and versions are not automatically covered by these tests.</p>
+      <summary data-i18n="faq.linux.question">Which Linux desktops work?</summary>
+      <p data-i18n="faq.linux.answer">GNOME Remote Desktop on Ubuntu is the reference setup tested on Quest 3. Remote Login supports multiple screens; Desktop Sharing mirrors one screen. xrdp 0.9.24 with Xorg has been verified with one to three screens at connection, but changing the screen count requires a reconnect in the tested setup. Initial multi-screen support does not require live Display Control. Other servers and versions are not automatically covered by these tests.</p>
     </details>
     <details>
-      <summary>Can I add or remove screens while connected?</summary>
-      <p>Use the minus and plus controls in the dock, within your edition's limit. GNOME Remote Login and Windows Server 2025 have been tested with live changes. A slow confirmation keeps the desktop usable; waiting alone does not trigger a reconnect. If the change is unavailable or interrupts the connection, the app explains the fallback and reconnects once with the requested screen count. You can also choose Connection → Reconnect, with a warning that it interrupts the session.</p>
+      <summary data-i18n="faq.screens.question">Can I add or remove screens while connected?</summary>
+      <p data-i18n="faq.screens.answer">Use the minus and plus controls in the dock, within your edition's limit. GNOME Remote Login and Windows Server 2025 have been tested with live changes. A slow confirmation keeps the desktop usable; waiting alone does not trigger a reconnect. If the change is unavailable or interrupts the connection, the app explains the fallback and reconnects once with the requested screen count. You can also choose Connection → Reconnect, with a warning that it interrupts the session.</p>
     </details>
     <details>
-      <summary>Why does the app say Desktop starting…?</summary>
-      <p>Signing in and showing the first desktop image are separate steps. GNOME Remote Login can take around ten seconds to start a session. The connection form stays visible until an actual image has been presented, rather than exposing a blank panel. Waiting messages, errors and reconnect notices appear below the dock; use Details for longer diagnostics.</p>
+      <summary data-i18n="faq.startup.question">Why does the app say Desktop starting…?</summary>
+      <p data-i18n="faq.startup.answer">Signing in and showing the first desktop image are separate steps. GNOME Remote Login can take around ten seconds to start a session. The connection form stays visible until an actual image has been presented, rather than exposing a blank panel. Waiting messages, errors and reconnect notices appear below the dock; use Details for longer diagnostics.</p>
     </details>
     <details>
-      <summary>What if accents appear as Unicode escapes in the clipboard?</summary>
-      <p>Text is preserved exactly by default, including literal escapes in code and JSON. Some GNOME server versions escape accented characters. For an affected host, open Compatibility and enable Decode clipboard Unicode escapes; the choice is remembered for that address and port. It applies only to text received from the server and can alter literal escapes, so leave it off on unaffected hosts. It does not repair the headset-to-server direction; that needs a server-side fix. Clipboard sharing is text only.</p>
+      <summary data-i18n="faq.unicode.question">What if accents appear as Unicode escapes in the clipboard?</summary>
+      <p data-i18n="faq.unicode.answer">Text is preserved exactly by default, including literal escapes in code and JSON. Some GNOME server versions escape accented characters. For an affected host, open Compatibility and enable Decode clipboard Unicode escapes; the choice is remembered for that address and port. It applies only to text received from the server and can alter literal escapes, so leave it off on unaffected hosts. It does not repair the headset-to-server direction; that needs a server-side fix. Clipboard sharing is text only.</p>
     </details>
     <details>
-      <summary>Where does my data go?</summary>
-      <p>The connection goes straight from the headset to your PC. There is no account and no cloud relay. The server certificate is pinned on first use, and the connection credentials stay on the headset, encrypted.</p>
+      <summary data-i18n="faq.data.question">Where does my data go?</summary>
+      <p data-i18n="faq.data.answer">The connection goes straight from the headset to your PC. There is no account and no cloud relay. The server certificate is pinned on first use, and the connection credentials stay on the headset, encrypted.</p>
     </details>
     <details>
-      <summary>Can I go back to the flat layout after buying Ultra?</summary>
-      <p>Yes. Ultra includes a switch between curved and flat panels. Nothing is locked in one shape.</p>
+      <summary data-i18n="faq.flat.question">Can I go back to the flat layout after buying Ultra?</summary>
+      <p data-i18n="faq.flat.answer">Yes. Ultra includes a switch between curved and flat panels. Nothing is locked in one shape.</p>
     </details>
   </div>
 </section>
 
 <section class="band">
-  <h2>Your desk is already in the room.</h2>
-  <p>Install the free app on your Quest, connect to your PC, and unlock Ultra when you want more screens.</p>
-  <a class="btn btn-primary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="final_cta">Get it on Meta Horizon Store</a>
+  <h2 data-i18n="final.title">Your desk is already in the room.</h2>
+  <p data-i18n="final.description">Install the free app on your Quest, connect to your PC, and unlock Ultra when you want more screens.</p>
+  <a class="btn btn-primary" href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="final_cta" data-i18n="cta.store">Get it on Meta Horizon Store</a>
 </section>
 
 <footer>
   <div class="footer-links">
     <a href="https://www.meta.com/experiences/1466447889876925/" target="_blank" rel="noopener" data-umami-event="meta_store_click" data-umami-event-placement="footer">Meta Horizon Store</a>
-    <a href="privacy.html">Privacy Policy</a>
+    <a href="privacy.html" data-i18n="common.privacy">Privacy Policy</a>
     <a href="mailto:bytestudio.rdp@gmail.com">Contact</a>
   </div>
-  <p>&copy; 2026 ByteStudio VR. ByteStudio Remote Desktop for Meta Quest.</p>
-  <p style="margin-top: 0.6rem; font-size: 0.82rem;">Built with Meta Spatial SDK · FreeRDP · OpenSSL</p>
-  <p style="margin-top: 0.6rem; font-size: 0.75rem;"><a href="https://drive.google.com/file/d/1qLkXKNR4VnFeI_w_LH95oNWPRtY2Wj3m/view?usp=sharing" target="_blank" rel="noopener" style="color: var(--text-muted);" data-umami-event="apk_download_click">APK download</a></p>
+  <p data-i18n="index.footer">&copy; 2026 ByteStudio VR. ByteStudio Remote Desktop for Meta Quest.</p>
+  <p style="margin-top: 0.6rem; font-size: 0.82rem;" data-i18n="index.builtWith">Built with Meta Spatial SDK · FreeRDP · OpenSSL</p>
+  <p style="margin-top: 0.6rem; font-size: 0.75rem;"><a href="https://drive.google.com/file/d/1qLkXKNR4VnFeI_w_LH95oNWPRtY2Wj3m/view?usp=sharing" target="_blank" rel="noopener" style="color: var(--text-muted);" data-umami-event="apk_download_click" data-i18n="cta.apk">APK download</a></p>
 </footer>
 
 <div id="imageModal" class="modal">
@@ -1158,9 +1166,14 @@
   ];
   let currentSlide = 0;
 
+  function updateModalDescription() {
+    document.getElementById('modalImage').alt = document.querySelectorAll('.gallery-item img')[currentSlide].alt;
+  }
+
   function openModal(index) {
     currentSlide = index;
     document.getElementById('modalImage').src = screenshots[currentSlide];
+    updateModalDescription();
     document.getElementById('imageModal').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -1173,7 +1186,10 @@
   function changeSlide(direction) {
     currentSlide = (currentSlide + direction + screenshots.length) % screenshots.length;
     document.getElementById('modalImage').src = screenshots[currentSlide];
+    updateModalDescription();
   }
+
+  document.addEventListener('languagechange', updateModalDescription);
 
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('imageModal');

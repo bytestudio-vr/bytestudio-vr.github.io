@@ -5,7 +5,9 @@ Windows or Linux desktop into VR over standard RDP.
 
 - `index.html` — product page: features, Free vs Ultra, screenshots, setup, FAQ, Store calls to action.
 - `privacy.html` — privacy policy, including the in-app purchase disclosure.
-- `analytics.js` — optional Umami Cloud tracking, shared by both pages.
+- `i18n.js` and `i18n.css` — shared EN/FR selector and browser-local language preference.
+- `locales/fr.json` — French product-page translations; English remains in the HTML as the fallback.
+- `analytics.js` — optional Umami Cloud tracking on the product page only.
 - `robots.txt` — crawler rules and sitemap location.
 - `sitemap.xml` — URLs submitted to search engines.
 - `images/` — app icon, Store cover and layout screenshots.
@@ -33,6 +35,24 @@ python3 -m http.server 8000
 
 Then visit http://localhost:8000/.
 
+## Languages
+
+Both pages provide an EN/FR selector. The preference is stored in `localStorage` under
+`bytestudio.language` and shared across pages and tabs on the same origin. English is the default.
+If storage is blocked, switching still works for the current page. If the French resource cannot
+load, the English text remains available. Serve the folder over HTTP to load the JSON translations.
+
+The product page uses `data-i18n` keys in `locales/fr.json`, including alternate text and metadata.
+Its FAQ structured data follows the displayed language. The policy embeds both language versions
+directly in HTML and retains its English content when JavaScript is disabled. Keep the two policy
+versions aligned when editing data-handling commitments. Language selection sends no analytics event.
+
+Run the language tests with Node.js, without installing dependencies:
+
+```bash
+node --test tests/i18n.test.js
+```
+
 ## Analytics
 
 The site supports [Umami Cloud](https://umami.is/pricing), with no backend or build step to maintain.
@@ -47,7 +67,8 @@ changes, update `domains` in the same file. Deploy the files to GitHub Pages to 
 data; visits before activation cannot be recovered.
 
 The [Umami dashboard](https://cloud.umami.is/) shows page views, visits, visitors, referrers,
-countries, browsers and devices for the product and privacy pages. The **Events** view contains `meta_store_click` and
+countries, browsers and devices for the product page. The policy loads no analytics script.
+The **Events** view contains `meta_store_click` and
 `apk_download_click`. For Store clicks, the `placement` property distinguishes `navigation`, `hero`,
 `free_plan`, `ultra_plan`, `final_cta` and `footer`. These measure link clicks, not completed downloads,
 installations or purchases.

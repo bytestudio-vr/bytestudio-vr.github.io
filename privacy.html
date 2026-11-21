@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Privacy Policy of ByteStudio Remote Desktop for Meta Quest 3">
+  <meta name="description" content="Privacy Policy of ByteStudio Remote Desktop for Meta Quest 3" data-i18n="privacy.description" data-i18n-attr="content">
   <meta name="theme-color" content="#1a1a2e">
 
-  <title>Privacy Policy - ByteStudio Remote Desktop for Meta Quest 3</title>
+  <title data-i18n="privacy.title">Privacy Policy - ByteStudio Remote Desktop for Meta Quest 3</title>
+  <link rel="stylesheet" href="i18n.css">
+  <script defer src="i18n.js"></script>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,6 +41,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -61,6 +65,8 @@
       margin: 0 auto;
       padding: 3rem 2rem;
     }
+
+    main > .language-switch { margin-bottom: 1.5rem; }
 
     h1 {
       font-size: 2.4rem;
@@ -89,6 +95,7 @@
       border: 1px solid rgba(0, 102, 204, 0.3);
       border-radius: 8px;
       padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
     }
 
     table {
@@ -103,9 +110,13 @@
       padding: 0.6rem 0.75rem;
       border: 1px solid rgba(0, 102, 204, 0.25);
       vertical-align: top;
+      overflow-wrap: anywhere;
     }
 
     th { background: var(--surface); color: var(--secondary); }
+
+    .questions-table { table-layout: fixed; }
+    .questions-table th:first-child { width: 30%; }
 
     footer {
       background: var(--surface);
@@ -130,11 +141,17 @@
       <img src="images/app-icon.png" alt="Logo">
       <span>ByteStudio Remote Desktop</span>
     </a>
-    <a class="back" href="index.html">&larr; Back to home</a>
+    <a class="back" href="index.html" data-i18n="common.back">&larr; Back to home</a>
   </div>
 </nav>
 
 <main>
+  <div class="language-switch" role="group" aria-label="Language / Langue" hidden>
+    <button type="button" data-language-button="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+    <button type="button" data-language-button="fr" lang="fr" aria-label="Français" aria-pressed="false">FR</button>
+  </div>
+
+  <article class="policy-en" lang="en" data-language-content="en">
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: November 21, 2026</p>
 
@@ -270,7 +287,7 @@
     with the subject "Data deletion request", with a written response within 30 days. Local app data
     can also be removed by clearing the app's data in headset settings or uninstalling it.
   </div>
-  <table>
+  <table class="questions-table">
     <thead>
       <tr><th>Question</th><th>Answer</th></tr>
     </thead>
@@ -416,6 +433,12 @@
 
   <h2>12. Product website analytics</h2>
   <p>
+    This website saves your chosen language (EN or FR) in your browser's local storage to reuse it
+    on the product and privacy pages. This preference contains no user identifier and is used only
+    to select the display language, not for tracking. Clear this site's browser data to remove it.
+    Choosing a language does not send an analytics event.
+  </p>
+  <p>
     <strong>This Privacy Policy page loads no analytics or tracking script.</strong> Reading it does
     not require an account, login, form submission or consent to analytics. Ordinary requests to the
     website hosting provider are still necessary to serve the page; the absence of a tracker does
@@ -441,11 +464,364 @@
     content blocker. For questions about website analytics, contact us using the address in
     section 10.
   </p>
+  </article>
+
+  <article class="policy-fr" lang="fr" data-language-content="fr" hidden>
+  <h1>Politique de confidentialité</h1>
+  <p class="updated">Dernière mise à jour : 21 novembre 2026</p>
+
+  <p>
+    Cette politique s’applique à l’application <strong>ByteStudio Remote Desktop</strong> pour Meta Quest
+    (paquet <code>com.bytestudio.linuxdesktop</code>), publiée sous le nom <strong>ByteStudio VR</strong>
+    (« nous »). Elle explique quelles informations l’application traite et dans quel but. La mesure
+    d’audience de ce site de présentation est décrite séparément à la section 12 et ne fait pas partie
+    de l’application.
+  </p>
+
+  <div class="summary">
+    <strong>En résumé, pour l’application :</strong> l’application traite les informations de connexion,
+    le contenu du bureau distant et les commandes afin de relier ton casque à l’ordinateur que
+    <em>tu</em> choisis. Les informations de connexion enregistrées restent dans le stockage privé de
+    l’application sur ton casque. Nous n’exploitons aucun serveur pour l’application et ne vendons pas
+    de données personnelles, ni ne les utilisons à des fins publicitaires ou de mesure d’audience.
+    <strong>La demande d’accès aux fonctionnalités de la plateforme pour Ultra couvre la collecte et
+    le traitement de ton identifiant utilisateur numérique Meta (USER_ID) et des enregistrements
+    d’achat de cette application (IAP)</strong> via le Horizon Platform SDK, uniquement pour vérifier
+    la propriété de l’achat, déverrouiller Ultra, restaurer l’accès et actualiser l’état local de
+    déverrouillage. La section 6 expose les engagements de traitement pour ces fonctionnalités
+    demandées. Le traitement local par l’application reste un traitement de données personnelles,
+    même sans serveur exploité par l’éditeur. Tous les utilisateurs peuvent demander la suppression
+    de leurs données selon la procédure décrite à la section 8.
+  </div>
+
+  <h2>1. Responsable du traitement</h2>
+  <p>
+    <strong>Cédric Guillot, établi en France</strong>, publie l’application sous le nom ByteStudio VR
+    (équipe de développement Meta : <code>byte_studio</code>) et est le responsable du traitement qui
+    détermine les finalités et les moyens du traitement par l’application, y compris ceux de
+    l’identifiant Meta et des données d’achat décrits à la section 6. Un traitement sur ton casque ne
+    supprime pas cette responsabilité. Les coordonnées et la procédure de suppression figurent aux
+    sections 8 et 10.
+  </p>
+
+  <h2>2. Informations qui restent sur ton casque</h2>
+  <p>Pour faciliter la reconnexion, l’application enregistre localement les informations suivantes dans son stockage privé :</p>
+  <table>
+    <thead>
+      <tr><th>Donnée</th><th>Finalité</th><th>Détails</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Adresse de l’hôte, port, nom d’utilisateur</td>
+        <td>Préremplir le formulaire de connexion</td>
+        <td>Enregistrés en clair dans le stockage privé de l’application.</td>
+      </tr>
+      <tr>
+        <td>Mot de passe</td>
+        <td>Se reconnecter sans le ressaisir</td>
+        <td>Enregistré <strong>uniquement si tu coches « Remember password »</strong>. Chiffré avec AES-GCM et une clé non exportable de l’Android Keystore. Décoche la case puis reconnecte-toi pour l’effacer.</td>
+      </tr>
+      <tr>
+        <td>Empreinte du certificat du serveur</td>
+        <td>Détecter une usurpation du serveur (confiance à la première utilisation, comme SSH)</td>
+        <td>Enregistrée sous forme d’empreinte SHA-256, par hôte et port.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Ces enregistrements ne sont pas envoyés vers un serveur ou un service de stockage exploité par
+    l’éditeur, et les données de l’application sont exclues des sauvegardes Android. Les identifiants
+    nécessaires à l’ouverture de session sont transmis à l’ordinateur choisi pendant une connexion,
+    comme décrit à la section 3.
+  </p>
+
+  <h2>3. Informations transmises à ton ordinateur</h2>
+  <p>
+    L’application sert à contrôler un ordinateur dont tu es propriétaire ou que tu administres.
+    Pendant la connexion, elle transmet à cet ordinateur, via le protocole Remote Desktop Protocol
+    (RDP, chiffré avec TLS et authentifié avec NLA) :
+  </p>
+  <ul>
+    <li>tes identifiants de connexion, pour ouvrir une session ;</li>
+    <li>la position de ton pointeur et tes clics ;</li>
+    <li>tes frappes au clavier, physique ou virtuel ;</li>
+    <li>le texte du presse-papiers lorsque tu utilises les fonctions de presse-papiers et de collage.</li>
+  </ul>
+  <p>
+    Elle reçoit et traite l’image de l’écran, l’audio et le texte du presse-papiers fournis par cet
+    ordinateur pour afficher le bureau, jouer son audio et permettre la copie de texte. L’application
+    n’enregistre pas l’image ou l’audio du bureau. Ce trafic passe directement entre ton casque et ton
+    ordinateur, généralement sur ton réseau local, sans transiter par un serveur que nous exploitons.
+    Le traitement de ces informations par ton ordinateur reste sous ton contrôle.
+  </p>
+
+  <h2>4. Autorisations utilisées</h2>
+  <ul>
+    <li><strong>Réseau (Internet)</strong> : nécessaire pour ouvrir la connexion RDP vers ton ordinateur.</li>
+    <li><strong>Suivi des mains</strong> : permet de pointer et cliquer avec tes mains. Le système Meta
+      et l’application traitent localement les commandes des mains pour piloter le pointeur.
+      L’application n’enregistre ni ne stocke les données brutes de suivi des mains. Les actions de
+      pointeur qui en résultent sont transmises à ton ordinateur, comme décrit à la section 3.</li>
+    <li><strong>Passthrough</strong> : affiche la pièce autour du bureau. Les images des caméras sont
+      gérées par le système Meta ; l’application n’y a pas accès et ne les stocke pas.</li>
+    <li><strong>Manettes et suivi du casque</strong> : l’application utilise les modèles de manettes,
+      les positions et les commandes fournis par le système pour afficher la scène, placer les
+      panneaux et contrôler le pointeur. Les données brutes de suivi sont traitées sur le casque,
+      sans être enregistrées ni nous être envoyées. Les actions des manettes peuvent produire les
+      commandes de pointeur et de clavier transmises à ton ordinateur.</li>
+    <li><strong>Lecture audio</strong> : l’application joue le son de l’ordinateur distant dans son
+      propre flux audio. Les réglages de volume de l’application modifient uniquement ce flux, par
+      un gain appliqué dans l’application ; ils ne modifient jamais le volume système du casque et
+      ne nécessitent aucune autorisation.</li>
+  </ul>
+  <p>
+    L’application n’utilise ni le microphone, ni les contacts, ni la localisation géographique.
+    Elle n’accède pas à tes fichiers personnels et ne transfère pas de fichiers vers l’ordinateur distant.
+  </p>
+
+  <h2>5. Mesure d’audience, publicité et suivi</h2>
+  <p>
+    L’application ne contient aucun outil de mesure d’audience, service de signalement de crash,
+    publicité ou dispositif de suivi. Elle n’utilise pas de cookies. Nous ne créons pas de profils
+    et ne vendons pas de données.
+  </p>
+
+  <h2 id="platform-data-fr">6. Plateforme Meta, achat intégré et identifiant utilisateur Meta</h2>
+  <p>
+    L’application fonctionne sur Meta Horizon OS et est distribuée via le Meta Horizon Store. Meta
+    traite les données relatives à ton utilisation du casque et du Store selon ses propres politiques,
+    indépendantes de cette application. Consulte la
+    <a href="https://www.meta.com/legal/privacy-policy/" rel="noopener">politique de confidentialité de Meta</a>
+    et la
+    <a href="https://www.meta.com/legal/quest/privacy-policy/" rel="noopener">politique de confidentialité complémentaire de Meta Quest</a>.
+  </p>
+  <p>
+    <strong>Engagements de traitement pour Ultra :</strong> les engagements suivants régissent la
+    collecte et le traitement des données couverts par notre demande d’accès aux fonctionnalités
+    <strong>User ID (USER_ID)</strong> et <strong>In-app purchases and/or downloadable content (IAP)</strong>
+    via le Data Use Checkup (DUC) de Meta. Leur seule finalité est l’intégration de l’achat unique de
+    l’extension Ultra.
+  </p>
+  <div class="summary" id="duc-description-fr">
+    Pour Ultra, la demande d’accès aux fonctionnalités User ID (USER_ID) et In-App Purchases (IAP)
+    couvre la collecte et le traitement de l’identifiant utilisateur numérique Meta et des
+    enregistrements d’achat de cette application via le Horizon Platform SDK, uniquement pour vérifier
+    la propriété de l’achat, déverrouiller Ultra, restaurer l’accès après une réinstallation et
+    actualiser l’état local de déverrouillage. Les engagements de traitement sont : traitement dans
+    la mémoire de l’application sur le casque, aucun envoi vers un serveur exploité par l’éditeur et
+    stockage persistant pour Ultra limité à un drapeau oui/non « Ultra unlocked », sans identifiant
+    de compte ou d’achat. Aucun nom, pseudo ou photo de profil Meta n’est lu à cette fin. Les demandes
+    de suppression sont ouvertes à tous les utilisateurs, sans frais, par email à
+    <a href="mailto:bytestudio.rdp@gmail.com?subject=Data%20deletion%20request">bytestudio.rdp@gmail.com</a>
+    avec l’objet « Data deletion request », avec une réponse écrite sous 30 jours. Les données locales
+    de l’application peuvent aussi être supprimées en effaçant ses données dans les paramètres du
+    casque ou en désinstallant l’application.
+  </div>
+  <table class="questions-table">
+    <thead>
+      <tr><th>Question</th><th>Réponse</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Données concernées</td>
+        <td>
+          Ton <strong>identifiant utilisateur Meta</strong>, l’identifiant numérique fourni par Meta
+          pour l’utilisateur connecté, et les <strong>enregistrements d’achat de cette application</strong>,
+          notamment les identifiants d’extension ou de produit et le fait que tu possèdes ou non
+          l’extension Ultra. Nous ne demandons pas les fonctionnalités User Profile, Friends ou
+          Subscriptions à cette fin. Le nom Meta, le pseudo, la photo de profil, l’adresse email et
+          la liste d’amis ne sont ni lus ni utilisés pour l’intégration de l’achat Ultra.
+        </td>
+      </tr>
+      <tr>
+        <td>Source de la collecte</td>
+        <td>
+          Ces données proviennent des services de compte et d’achat de Meta, accessibles via le
+          Horizon Platform SDK sur ton casque pour vérifier la propriété de l’achat, effectuer un
+          achat et restaurer l’accès. Le compte concerné est le compte Meta connecté sur l’appareil.
+          L’application ne demande ni mot de passe Meta ni compte ByteStudio distinct.
+        </td>
+      </tr>
+      <tr>
+        <td>Utilisation</td>
+        <td>
+          Les seules finalités couvertes par cette demande sont l’identification de l’utilisateur
+          connecté pour l’intégration de l’achat, la vérification de la propriété de l’achat, le
+          déverrouillage d’Ultra, la restauration de l’accès après une réinstallation et
+          l’actualisation de l’état local de déverrouillage. Toute utilisation publicitaire, de
+          mesure d’audience, de profilage, de marketing ou sans rapport avec ces finalités est exclue.
+        </td>
+      </tr>
+      <tr>
+        <td>Lieu du traitement</td>
+        <td>
+          Le traitement par l’application est limité à la mémoire de ton casque. Les services de
+          la plateforme Meta traitent les demandes de compte et d’achat. Aucun identifiant Meta ni
+          enregistrement d’achat n’est envoyé vers un serveur exploité par l’éditeur, un service de
+          mesure d’audience ou un autre service externe. Nous n’exploitons aucun serveur pour
+          l’application. Un traitement local par l’application ne signifie pas que les services
+          Meta fonctionnent hors ligne.
+        </td>
+      </tr>
+      <tr>
+        <td>Durée de conservation</td>
+        <td>
+          La conservation de l’identifiant Meta et des réponses d’achat par l’application est limitée
+          au temps nécessaire à la vérification, uniquement en mémoire. Le stockage persistant de
+          l’application pour Ultra se limite à un drapeau de cache oui/non « Ultra unlocked », sans
+          identifiant de compte ou d’achat. Ce drapeau n’est pas une preuve de propriété ; l’état
+          d’achat fourni par Meta est la source de vérité pour son actualisation. Le drapeau reste
+          enregistré jusqu’à son actualisation, l’effacement des données ou la désinstallation.
+          Meta conserve ses enregistrements d’achat et les caches de sa plateforme selon ses
+          propres politiques.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Une vérification de propriété peut utiliser l’identifiant Meta même si la liste des achats est
+    vide. Le traitement couvert par cette demande ne se limite donc pas aux utilisateurs ayant
+    acheté Ultra. Le paiement et le parcours d’achat sont gérés par Meta, pas par ByteStudio.
+    L’application ne collecte ni les données de carte bancaire ni l’adresse de facturation.
+    Consulte la section 8 pour les demandes de suppression et l’effacement des données locales.
+  </p>
+
+  <h2>7. Partage et conservation</h2>
+  <p>
+    L’application échange les données RDP avec l’ordinateur choisi comme décrit à la section 3.
+    Pour Ultra, les demandes de compte et d’achat couvertes par cette politique sont échangées avec
+    Meta comme décrit à la section 6. Nous ne vendons ni ne louons ces données et ne les fournissons
+    pas à des annonceurs ou à des services de mesure d’audience. La mesure d’audience du site est
+    séparée et décrite à la section 12.
+  </p>
+  <p>
+    Les informations de connexion enregistrées restent sur le casque jusqu’à leur suppression.
+    Les tampons d’image et d’audio du bureau distant servent à la session en cours, sans être
+    conservés sous forme d’enregistrements. Les limites de conservation des données de compte Meta
+    et d’achat figurent à la section 6. Nous supprimons les données sous notre contrôle lorsqu’elles
+    ne sont plus nécessaires à la finalité indiquée, en réponse à une demande de suppression valide
+    ou lorsque les politiques Meta ou la loi applicable l’exigent. La section 8 explique ce que nous
+    pouvons supprimer et quels enregistrements sont contrôlés par Meta ou ton ordinateur.
+  </p>
+
+  <h2 id="deletion-fr">8. Tes choix et la suppression de tes données</h2>
+  <div class="summary">
+    <strong>Demande de suppression.</strong> Écris à
+    <a href="mailto:bytestudio.rdp@gmail.com?subject=Data%20deletion%20request">bytestudio.rdp@gmail.com</a>
+    avec l’objet <em>Data deletion request</em>. <strong>Cette procédure est ouverte à tous les
+    utilisateurs, dans tous les pays et sans frais.</strong> Tu peux demander la suppression ou
+    la correction des informations de connexion, de l’identifiant Meta ou des données d’achat
+    traités par l’application, ainsi que des informations personnelles que tu nous as envoyées
+    dans des messages d’assistance. Nous répondons sous 30 jours et expliquons par écrit ce qui a
+    été supprimé, ce qui nécessite une action sur ton casque et les enregistrements que nous ne
+    pouvons pas supprimer, avec la raison.
+  </div>
+  <p>
+    Précise que ta demande concerne ByteStudio Remote Desktop. N’envoie pas ton mot de passe RDP ou
+    Meta, ton identifiant Meta, tes données de paiement ou le contenu de ton bureau. Lorsque tu nous
+    contactes, nous recevons et traitons ton adresse email d’expéditeur et ton message via notre
+    boîte d’assistance, uniquement pour te répondre et traiter ta demande. Nous conservons cette
+    correspondance seulement pendant la durée nécessaire à la résolution de la demande et au respect
+    des obligations légales applicables.
+  </p>
+  <p>
+    Nous ne tenons aucune base de données côté éditeur concernant les utilisateurs de l’application,
+    les identifiants Meta ou les achats. Nous ne pouvons pas effacer à distance le stockage privé de
+    ton casque. Nous vérifions les informations que nous détenons, les supprimons lorsque cela
+    s’applique et t’accompagnons pour supprimer les données locales. Si nous ne détenons aucun
+    enregistrement à supprimer, nous le confirmons explicitement au lieu de considérer la demande
+    comme indisponible.
+  </p>
+  <p>Tu peux aussi supprimer à tout moment toutes les données que l’application conserve sur ton casque :</p>
+  <ul>
+    <li>Décoche <em>Remember password</em> puis reconnecte-toi pour supprimer le mot de passe enregistré.</li>
+    <li>Efface les données de l’application dans les paramètres du casque (<em>Settings &rarr; Apps &rarr; ByteStudio Remote Desktop &rarr; Clear data</em>)
+      pour supprimer l’hôte, le nom d’utilisateur, le mot de passe, les empreintes de certificats et le drapeau « Ultra unlocked ».</li>
+    <li>La désinstallation supprime toutes les données de l’application sur le casque.</li>
+  </ul>
+  <p>
+    L’effacement des données ou la désinstallation ne supprime pas ton compte Meta, les enregistrements
+    d’achat de Meta ou les caches gérés par sa plateforme, et n’annule ni ne rembourse une extension.
+    Les demandes concernant les enregistrements détenus par Meta doivent être adressées à Meta via
+    les réglages de confidentialité et de compte liés à la section 6 ; nous ne pouvons pas supprimer
+    ces enregistrements à sa place. Les données détenues par ton ordinateur distant doivent être
+    supprimées sur cet ordinateur. Une nouvelle vérification de propriété via la fonction d’achat
+    Ultra peut obtenir de nouveau les données de compte et d’achat auprès de Meta ; l’effacement
+    local ne supprime pas les enregistrements sources détenus par Meta.
+  </p>
+  <p>
+    Si tu résides dans l’Union européenne ou au Royaume-Uni, tes droits au titre du RGPD restent
+    applicables : tu peux demander l’accès, la rectification, la suppression, la limitation du
+    traitement ou la portabilité de tes données, et t’opposer à leur traitement. Utilise l’adresse
+    ci-dessus ; nous répondons dans un délai d’un mois.
+  </p>
+
+  <h2>9. Enfants</h2>
+  <p>
+    L’application est un outil de productivité qui ne s’adresse pas aux enfants de moins de 13 ans.
+    Nous ne proposons pas intentionnellement l’application aux enfants de moins de 13 ans. Si tu
+    penses qu’un enfant nous a fourni des informations personnelles, contacte l’adresse ci-dessous
+    pour que nous puissions examiner et traiter une demande de suppression.
+  </p>
+
+  <h2>10. Contact</h2>
+  <p>
+    Pour toute question concernant cette politique ou pour demander la suppression ou la correction
+    de tes données :
+    <a href="mailto:bytestudio.rdp@gmail.com?subject=Privacy">bytestudio.rdp@gmail.com</a>.
+    Pour une demande de suppression, utilise l’objet <em>Data deletion request</em>.
+  </p>
+
+  <h2>11. Modifications de cette politique</h2>
+  <p>
+    Si le traitement des données par l’application change, nous mettons à jour cette page et sa date
+    de dernière mise à jour avant la publication de la nouvelle version.
+  </p>
+
+  <h2>12. Mesure d’audience du site de présentation</h2>
+  <p>
+    Ce site conserve la langue choisie (EN ou FR) dans le stockage local de ton navigateur pour la
+    réutiliser sur la page de présentation et la politique. Cette préférence ne contient aucun
+    identifiant utilisateur et sert uniquement à choisir la langue d’affichage, pas au suivi.
+    Efface les données de ce site dans ton navigateur pour la supprimer. Le choix d’une langue
+    n’envoie aucun événement de mesure d’audience.
+  </p>
+  <p>
+    <strong>Cette page de politique de confidentialité ne charge aucun script de mesure d’audience
+    ou de suivi.</strong> Sa lecture ne nécessite ni compte, ni connexion, ni envoi de formulaire,
+    ni consentement à la mesure d’audience. Les requêtes ordinaires à l’hébergeur du site restent
+    nécessaires pour servir la page ; l’absence de tracker ne signifie pas qu’aucune donnée
+    technique de réseau ne parvient à cet hébergeur.
+  </p>
+  <p>
+    Lorsqu’elle est activée, la mesure d’audience des autres pages du site utilise
+    <a href="https://umami.is/" rel="noopener">Umami Cloud</a> pour mesurer les pages vues, les visites,
+    les sources de provenance, les types de navigateur et d’appareil, la localisation approximative
+    et les clics sur les liens du Meta Horizon Store et des APK. Un clic ne nous indique pas si tu
+    as installé l’application ou acheté Ultra. La mesure d’audience du site ne change pas le
+    traitement des données par l’application.
+  </p>
+  <p>
+    Umami héberge les données de mesure d’audience. Il n’utilise pas de cookies de suivi et ne suit
+    pas les visiteurs d’un site à l’autre. Nous ne lui envoyons ni noms, ni adresses email, ni
+    informations de connexion de l’application. Comme pour toute requête web, le service reçoit des
+    informations techniques telles que l’adresse IP et les en-têtes du navigateur pour traiter la
+    requête. Le tracker exclut les paramètres et le fragment de l’URL de la page. L’offre gratuite
+    conserve les données de mesure d’audience pendant six mois. Consulte la
+    <a href="https://umami.is/privacy" rel="noopener">politique de confidentialité d’Umami</a> pour en savoir plus.
+  </p>
+  <p>
+    La mesure d’audience est désactivée dans les aperçus locaux et lorsque ton navigateur transmet
+    un signal Do Not Track ou Global Privacy Control activé. Tu peux aussi bloquer le script de
+    mesure d’audience avec un bloqueur de contenu. Pour toute question à ce sujet, utilise les
+    coordonnées de la section 10.
+  </p>
+  </article>
 </main>
 
 <footer>
-  <p>&copy; 2026 ByteStudio VR. ByteStudio Remote Desktop Client for Meta Quest 3.</p>
-  <p style="margin-top: 0.5rem;"><a href="index.html">Home</a></p>
+  <p data-i18n="privacy.footer">&copy; 2026 ByteStudio VR. ByteStudio Remote Desktop Client for Meta Quest 3.</p>
+  <p style="margin-top: 0.5rem;"><a href="index.html" data-i18n="common.home">Home</a></p>
 </footer>
 
 </body>
